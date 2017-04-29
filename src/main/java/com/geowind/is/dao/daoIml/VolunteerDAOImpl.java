@@ -19,8 +19,8 @@ public class VolunteerDAOImpl extends BaseDaoImpl<Volunteer> implements
 	@Override
 	public Volunteer getVolunteer(String loginname, String loginpass) {
 
-		String sql = "select * from volunteer where loginname=?"
-				+ "and loginpass=?";
+		String sql = "select * from volunteer where username=?"
+				+ "and password=?";
 		return query(sql, loginname, loginpass);
 	}
 
@@ -34,7 +34,7 @@ public class VolunteerDAOImpl extends BaseDaoImpl<Volunteer> implements
 	 */
 	public Volunteer findByLoginnameAndLoginpass(String loginname,
 			String loginpass) throws SQLException {
-		String sql = "select * from volunteer where loginname=? and loginpass=?";
+		String sql = "select * from volunteer where username=? and password=?";
 		return qr.query(sql, new BeanHandler<Volunteer>(Volunteer.class),
 				loginname, loginpass);
 	}
@@ -42,7 +42,7 @@ public class VolunteerDAOImpl extends BaseDaoImpl<Volunteer> implements
 	@Override
 	public boolean findByUidAndPassword(String uid, String password)
 			throws SQLException {
-		String sql = "select count(*) from volunteer where uid=? and loginpass=?";
+		String sql = "select count(*) from volunteer where vid=? and password=?";
 		Number number = (Number) qr.query(sql, new ScalarHandler(), uid,
 				password);
 		return number.intValue() > 0;
@@ -50,13 +50,13 @@ public class VolunteerDAOImpl extends BaseDaoImpl<Volunteer> implements
 
 	@Override
 	public void updatePassword(String uid, String password) throws SQLException {
-		String sql = "update volunteer set loginpass=? where uid=?";
+		String sql = "update volunteer set password=? where vid=?";
 		update(sql, password, uid);
 	}
 
 	@Override
 	public boolean ValidateLoginname(String loginname) throws SQLException {
-		String sql = "select count(1) from volunteer where loginname=?";
+		String sql = "select count(1) from volunteer where username=?";
 		Number number = (Number) qr.query(sql, new ScalarHandler(), loginname);
 		return number.intValue() == 0;
 	}

@@ -11,8 +11,6 @@ import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
-import cn.itcast.jdbc.TxQueryRunner;
-
 import com.geowind.is.dao.Dao;
 import com.geowind.is.dao.daoIml.ConnectionContext;
 import com.geowind.is.db.JDBCUtils;
