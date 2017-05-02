@@ -1,61 +1,64 @@
 package com.geowind.is.domain;
 
+import java.sql.Date;
+
+
 /**
  * 用户模块实体类
  *
  */
 public class Volunteer {
 	// 对应数据库表
-	private String uid;// 主键
-	private String loginname;// 登录名
-	private String loginpass;// 登录密码
+	private int vid;// 主键
+	private String username;// 登录名
+	private String password;// 登录密码
+	private String sex;// 登录密码
+	private Date birthday;// 生日
 	private String email;// 邮箱
+	private int phone;// 电话
+	private Date registdate;// 注册日期
+	private String image;// 图片
+	private int valid;// 是否有效
+	private String status;// 状态
 
-	// 注册表单
-	private String reloginpass;// 确认密码
-	private String verifyCode;// 验证码
-
-	// 修改密码表单
-	private String newpass;// 新密码
-
-	public String getReloginpass() {
-		return reloginpass;
+	public int getVid() {
+		return vid;
 	}
 
-	public void setReloginpass(String reloginpass) {
-		this.reloginpass = reloginpass;
+	public void setVid(int vid) {
+		this.vid = vid;
 	}
 
-	public String getVerifyCode() {
-		return verifyCode;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setVerifyCode(String verifyCode) {
-		this.verifyCode = verifyCode;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public String getUid() {
-		return uid;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setUid(String uid) {
-		this.uid = uid;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public String getLoginname() {
-		return loginname;
+	public String getSex() {
+		return sex;
 	}
 
-	public void setLoginname(String loginname) {
-		this.loginname = loginname;
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 
-	public String getLoginpass() {
-		return loginpass;
+	public Date getBirthday() {
+		return birthday;
 	}
 
-	public void setLoginpass(String loginpass) {
-		this.loginpass = loginpass;
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
 	}
 
 	public String getEmail() {
@@ -66,20 +69,64 @@ public class Volunteer {
 		this.email = email;
 	}
 
-	public String getNewpass() {
-		return newpass;
+	public int getPhone() {
+		return phone;
 	}
 
-	public void setNewpass(String newpass) {
-		this.newpass = newpass;
+	public void setPhone(int phone) {
+		this.phone = phone;
 	}
 
-	@Override
-	public String toString() {
-		return "Volunteer [uid=" + uid + ", loginname=" + loginname
-				+ ", loginpass=" + loginpass + ", email=" + email
-				+ ", reloginpass=" + reloginpass + ", verifyCode=" + verifyCode
-				+ ", newpass=" + newpass + "]";
+	public Date getRegistdate() {
+		return registdate;
+	}
+
+	public void setRegistdate(Date registdate) {
+		this.registdate = registdate;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public int getValid() {
+		return valid;
+	}
+
+	public void setValid(int valid) {
+		this.valid = valid;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public Volunteer(int vid, String username, String password, String sex,
+			Date birthday, String email, int phone, Date registdate,
+			String image, int valid, String status) {
+		super();
+		this.vid = vid;
+		this.username = username;
+		this.password = password;
+		this.sex = sex;
+		this.birthday = birthday;
+		this.email = email;
+		this.phone = phone;
+		this.registdate = registdate;
+		this.image = image;
+		this.valid = valid;
+		this.status = status;
+	}
+
+	public Volunteer() {
 	}
 
 }

@@ -64,8 +64,8 @@ public class VolunteerDAOImpl extends BaseDaoImpl<Volunteer> implements
 	@Override
 	public void add(Volunteer volunteer) throws SQLException {
 		String sql = "insert into volunteer values(?,?,?,?)";
-		Object[] params = { volunteer.getUid(), volunteer.getLoginname(),
-				volunteer.getLoginpass(), volunteer.getEmail() };
+		Object[] params = { volunteer.getVid(), volunteer.getUsername(),
+				volunteer.getPassword(), volunteer.getEmail() };
 		update(sql, params);
 	}
 }

@@ -20,7 +20,7 @@ public class JDBCUtils {
 	private static DataSource dataSource = null;
 	
 	static{
-		dataSource = new ComboPooledDataSource("ImageSorting");
+		dataSource=new ComboPooledDataSource("is");
 	}
 	
 	//获取数据库连接
@@ -41,7 +41,7 @@ public class JDBCUtils {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DBException("数据库关闭错误!");
+			throw new DBException("数据库连接错误!");
 		}
 	}
 	
@@ -53,7 +53,7 @@ public class JDBCUtils {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DBException("数据库连接错误!");
+			throw new DBException("数据库关闭错误!");
 		}
 		
 		try {
@@ -62,7 +62,7 @@ public class JDBCUtils {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DBException("数据库连接错误!");
+			throw new DBException("数据库关闭错误!");
 		}
 	}
 	

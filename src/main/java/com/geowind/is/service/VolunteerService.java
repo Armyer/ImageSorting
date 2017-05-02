@@ -55,7 +55,7 @@ public class VolunteerService {
 	public Volunteer login(Volunteer volunteer) {
 		try {
 			return volunteerDAO.findByLoginnameAndLoginpass(
-					volunteer.getLoginname(), volunteer.getLoginpass());
+					volunteer.getUsername(), volunteer.getPassword());
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -82,7 +82,7 @@ public class VolunteerService {
 	 */
 	public void regist(Volunteer volunteer) {
 		// 1. 数据的补齐
-		volunteer.setUid(CommonUtils.uuid());
+		//volunteer.setValid(CommonUtils.uuid());
 		// 2. 向数据库插入
 		try {
 			volunteerDAO.add(volunteer);
