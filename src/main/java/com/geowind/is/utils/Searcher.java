@@ -69,7 +69,8 @@ public class Searcher {
             System.out.println(hits.score(i) + ": \t" + fileName);
             Picture picture = new Picture();
             picture.setLocation(fileName);
-            picture.setStatus(hits.score(i));
+            String s = String.valueOf(hits.score(i));
+            picture.setStatus(s);
             pictureList.add(picture);
         }
 		

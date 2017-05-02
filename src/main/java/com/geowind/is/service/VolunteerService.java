@@ -1,4 +1,4 @@
-package com.geowind.is.volunteer.service;
+package com.geowind.is.service;
 
 import java.sql.SQLException;
 

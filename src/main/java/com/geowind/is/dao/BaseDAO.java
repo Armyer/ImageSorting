@@ -39,6 +39,7 @@ public class BaseDAO<T> implements Dao<T> {
 
 		try {
 			connection = ConnectionContext.getInstance().get();
+			System.out.println("sql is "+sql);
 			preparedStatement = connection.prepareStatement(sql,
 					Statement.RETURN_GENERATED_KEYS);
 
