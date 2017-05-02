@@ -105,8 +105,13 @@
 			<version>7.0</version>
 		</dependency>
 
-		<!-- mysql <dependency> <groupId>mysql</groupId> <artifactId>mysql-connector-java</artifactId> 
-			<version>5.1.38</version> <scope>runtime</scope> </dependency> -->
+		<!-- mysql 
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.38</version>
+			<scope>runtime</scope>
+		</dependency>-->
 
 		<dependency>
 			<groupId>commons-dbutils</groupId>
@@ -130,7 +135,7 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.5</version>
 		</dependency>
-		
+
 		<!-- 文件上传 -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>

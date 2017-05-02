@@ -2,16 +2,18 @@ package com.geowind.is.dao.daoIml;
 
 import java.util.List;
 
-import com.geowind.is.dao.BaseDAO;
+
 import com.geowind.is.dao.PictureDAO;
 import com.geowind.is.domain.Picture;
 
-public class PictureDAOImpl extends BaseDAO<Picture> implements PictureDAO {
+public class PictureDAOImpl extends BaseDaoImpl<Picture> implements PictureDAO {
 
 	/**
 	 * 上传图片集合数据
 	 */
-	public int upLoadImage(List<Picture> pictureList) {
+	public long insertImages(List<Picture> pictureList) {
+		
+		long result = 0;
 		
 		for(int i = 0;i<pictureList.size();i++){
 			
@@ -20,12 +22,15 @@ public class PictureDAOImpl extends BaseDAO<Picture> implements PictureDAO {
 			String sql = "insert into picture(pid,pname,location,valid,status) values (?,?,?,?,?)";
 			
 			Object[] params ={picture.getPid(),picture.getPname(),picture.getLocation(),picture.getValid(),picture.getStatus()};
-			System.out.println(" "+picture.getPid()+" ,"+picture.getPname());
 			
-			long result = insert(sql,params);
-			System.out.println("insert picture result is :"+result);
+			
+			//System.out.println(" "+picture.getPid()+" ,"+picture.getPname());
+			
+			result = insert(sql,params);
+			
+			//System.out.println("insert picture result is :"+result);
 		}
-		return 0;
+		return result;
 	}
 
 	@Override

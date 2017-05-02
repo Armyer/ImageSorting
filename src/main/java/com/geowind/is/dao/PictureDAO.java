@@ -8,11 +8,11 @@ public interface PictureDAO {
 	
 	
 	/**
-	 * 上传图片集合
+	 * 插入图片集合数据
 	 * @param pictureList
 	 * @return
 	 */
-	public int upLoadImage(List<Picture> pictureList);
+	public long insertImages(List<Picture> pictureList);
 	
 	
 	/**
