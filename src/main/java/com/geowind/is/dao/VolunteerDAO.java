@@ -14,7 +14,7 @@ public interface VolunteerDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public boolean findByUidAndPassword(String uid, String password)throws SQLException ;
+	public boolean findByUidAndPassword(String vid, String password)throws SQLException ;
 			
 	/**
 	 * 根据用户名和密码来查询Volunteer
@@ -41,7 +41,7 @@ public interface VolunteerDAO {
 	 * @return
 	 * @throws SQLException 
 	 */
-	public Volunteer findByLoginnameAndLoginpass(String loginname, String loginpass) throws SQLException;
+	public Volunteer findByLoginnameAndLoginpass(String username, String password) throws SQLException;
 
 	/**
 	 * 校验用户名是否注册

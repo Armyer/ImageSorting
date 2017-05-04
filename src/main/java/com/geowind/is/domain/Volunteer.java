@@ -2,7 +2,6 @@ package com.geowind.is.domain;
 
 import java.sql.Date;
 
-
 /**
  * 用户模块实体类
  *
@@ -12,10 +11,10 @@ public class Volunteer {
 	private int vid;// 主键
 	private String username;// 登录名
 	private String password;// 登录密码
-	private String sex;// 登录密码
 	private Date birthday;// 生日
-	private String email;// 邮箱
+	private String sex;// 登录密码
 	private int phone;// 电话
+	private String email;// 邮箱
 	private Date registdate;// 注册日期
 	private String image;// 图片
 	private int valid;// 是否有效
@@ -45,14 +44,6 @@ public class Volunteer {
 		this.password = password;
 	}
 
-	public String getSex() {
-		return sex;
-	}
-
-	public void setSex(String sex) {
-		this.sex = sex;
-	}
-
 	public Date getBirthday() {
 		return birthday;
 	}
@@ -61,12 +52,12 @@ public class Volunteer {
 		this.birthday = birthday;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getSex() {
+		return sex;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 
 	public int getPhone() {
@@ -75,6 +66,14 @@ public class Volunteer {
 
 	public void setPhone(int phone) {
 		this.phone = phone;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public Date getRegistdate() {
@@ -109,17 +108,17 @@ public class Volunteer {
 		this.status = status;
 	}
 
-	public Volunteer(int vid, String username, String password, String sex,
-			Date birthday, String email, int phone, Date registdate,
-			String image, int valid, String status) {
+	public Volunteer(int vid, String username, String password, Date birthday,
+			String sex, int phone, String email, Date registdate, String image,
+			int valid, String status) {
 		super();
-		this.vid = vid;
+		this.vid=vid;
 		this.username = username;
 		this.password = password;
-		this.sex = sex;
 		this.birthday = birthday;
-		this.email = email;
+		this.sex = sex;
 		this.phone = phone;
+		this.email = email;
 		this.registdate = registdate;
 		this.image = image;
 		this.valid = valid;
@@ -127,6 +126,15 @@ public class Volunteer {
 	}
 
 	public Volunteer() {
+	}
+
+	@Override
+	public String toString() {
+		return "Volunteer [vid=" + vid + ", username=" + username
+				+ ", password=" + password + ", sex=" + sex + ", birthday="
+				+ birthday + ", email=" + email + ", phone=" + phone
+				+ ", registdate=" + registdate + ", image=" + image
+				+ ", valid=" + valid + ", status=" + status + "]";
 	}
 
 }

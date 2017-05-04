@@ -4,19 +4,18 @@ import com.geowind.is.dao.AdminDAO;
 import com.geowind.is.domain.Admin;
 import com.geowind.is.domain.Volunteer;
 
-public class AdminDAOImpl extends BaseDaoImpl<Volunteer> implements AdminDAO {
+public class AdminDAOImpl extends BaseDaoImpl<Admin> implements AdminDAO {
 
 	@Override
-	public Volunteer mergeVolunteer(Volunteer volunteer) {
+	public void mergeVolunteer(Volunteer volunteer) {
 
-		String sql = "update volunteer SET * = (?,?,?,?,?,?,?,?,?,?) "
-				+ "WHERE usernsme = ?";
-		return query(sql, volunteer.getBirthday(), volunteer.getEmail(),
-				volunteer.getImage(), volunteer.getPassword(),
-				volunteer.getPhone(), volunteer.getRegistdate(),
-				volunteer.getSex(), volunteer.getStatus(),
-				volunteer.getUsername(), volunteer.getValid(),
-				volunteer.getUsername());
+		String sql = "update volunteer SET password=? " + "WHERE username = ?";
+		update(sql, volunteer.getPassword(), volunteer.getUsername());
+	}
+
+	public Admin getAdmin(String username, String password) {
+		String sql = "select * from admin where username=?" + "and password=?";
+		return query(sql, username, password);
 	}
 
 }
