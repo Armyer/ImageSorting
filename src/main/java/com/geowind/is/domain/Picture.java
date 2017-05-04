@@ -34,11 +34,11 @@ public class Picture {
 		this.valid = valid;
 	}
 
-	public double getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(double status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
@@ -50,7 +50,7 @@ public class Picture {
 	
 	public int valid;
 	
-	public  double status;
+	public  String status;
 
 	
 	
