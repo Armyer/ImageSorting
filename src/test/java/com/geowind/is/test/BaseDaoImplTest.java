@@ -43,7 +43,7 @@ public class BaseDaoImplTest {
 	public void testGetSingleVal() {
 
 		String sql = "select username from volunteer where vid=?";
-		System.out.println(volunteerDao.getSingleVal(sql, 1));
+		//System.out.println(volunteerDao.getSingleVal(sql, 1));
 	}
 
 	@Test

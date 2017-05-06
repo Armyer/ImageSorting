@@ -2,9 +2,8 @@
 
 <c3p0-config>
 
-<<<<<<< HEAD
-	<named-config name="is">
-=======
+
+
   <default-config name="is"> 
   
     <property name="jdbcUrl">jdbc:mysql://localhost:3306/imagesorting</property>
@@ -13,18 +12,6 @@
  
     <property name="driverClass">com.mysql.jdbc.Driver</property>
   
-    <property name="acquireIncrement">3</property>
-    <property name="initialPoolSize">5</property>
-    <property name="minPoolSize">5</property>
-    <property name="maxPoolSize">10</property>
->>>>>>> 0abd437d447e65de89b858a90f5df01d21223b14
-
-		<property name="user">root</property>
-		<property name="password">123456</property>
-		<property name="jdbcUrl">jdbc:mysql://localhost:3306/imagesorting</property>
-		<property name="driverClass">com.mysql.jdbc.Driver</property>
-
-<<<<<<< HEAD
 	    <!-- 若数据库中连接数不足时，一次性向数据库服务器中申请的连接数-->
 		<property name="acquireIncrement">50</property>
 		<!-- 初始化数据库连接池时连接的数量 -->
@@ -37,9 +24,6 @@
 		<property name="maxStatements">20</property>
 		<!-- 每个连接可以同时使用Statement的个数 -->
 		<property name="maxStatementsPerConnection">5</property>
+</default-config>
 
-	</named-config>
-=======
-  </default-config>
->>>>>>> 0abd437d447e65de89b858a90f5df01d21223b14
 </c3p0-config>

@@ -20,7 +20,7 @@ public class JDBCUtils {
 	private static DataSource dataSource = null;
 	
 	static{
-		dataSource=new ComboPooledDataSource("is");
+		dataSource=new ComboPooledDataSource();
 	}
 	
 	//获取数据库连接

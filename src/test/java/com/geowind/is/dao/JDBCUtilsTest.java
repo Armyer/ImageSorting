@@ -29,10 +29,10 @@ public class JDBCUtilsTest {
 		    	ComboPooledDataSource dataSource = new ComboPooledDataSource();		          
 		        try{  
 		          // 创建连接池  
-		            dataSource.setDriverClass( "com.mysql.jdbc.Driver" ); //loads the jdbc driver            
-		            dataSource.setJdbcUrl( "jdbc:mysql://localhost:3306/imagesorting" );
-		            dataSource.setUser("root");                                  
-		            dataSource.setPassword("123456");                                   
+//		            dataSource.setDriverClass( "com.mysql.jdbc.Driver" ); //loads the jdbc driver            
+//		            dataSource.setJdbcUrl( "jdbc:mysql://localhost:3306/imagesorting" );
+//		            dataSource.setUser("root");                                  
+//		            dataSource.setPassword("123456");                                   
 		            // 获得连接   
 		            conn = (Connection) dataSource.getConnection();  
 		            String sql = "select * from picture";  

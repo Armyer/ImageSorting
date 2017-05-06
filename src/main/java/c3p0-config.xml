@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <c3p0-config>
-
 	<named-config name="is">
 		<property name="jdbcUrl">jdbc:mysql://localhost:3306/imagesorting
 		</property>
 		<property name="user">root</property>
 		<property name="password">123456</property>
 		<property name="driverClass">com.mysql.jdbc.Driver</property>
-
-		<!-- 若数据库中连接数不足时，一次性向数据库服务器中申请的连接数 -->
+  
+	    <!-- 若数据库中连接数不足时，一次性向数据库服务器中申请的连接数-->
 		<property name="acquireIncrement">50</property>
 		<!-- 初始化数据库连接池时连接的数量 -->
 		<property name="initialPoolSize">5</property>

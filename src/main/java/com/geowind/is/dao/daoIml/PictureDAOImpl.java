@@ -6,6 +6,12 @@ import java.util.List;
 import com.geowind.is.dao.PictureDAO;
 import com.geowind.is.domain.Picture;
 
+/**
+ * 
+ * @author jiang
+ * Date:2017-4-30
+ *
+ */
 public class PictureDAOImpl extends BaseDaoImpl<Picture> implements PictureDAO {
 
 	/**
@@ -34,9 +40,12 @@ public class PictureDAOImpl extends BaseDaoImpl<Picture> implements PictureDAO {
 	}
 
 	@Override
-	public List<Picture> pushImageByRadmon() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Picture> queryImagesOfRandmon() {
+		String sql = "select * from picture order by RAND() limit 9";
+		
+		List<Picture> pictureList = queryForList(sql,null);
+		
+		return pictureList;
 	}
 
 	@Override
@@ -44,5 +53,7 @@ public class PictureDAOImpl extends BaseDaoImpl<Picture> implements PictureDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 
 }
