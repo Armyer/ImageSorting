@@ -4,6 +4,13 @@ import java.util.List;
 
 import com.geowind.is.domain.Picture;
 
+
+/**
+ * 
+ * @author jiang
+ * Date:2017-4-30
+ *
+ */
 public interface PictureDAO {
 	
 	
@@ -20,7 +27,7 @@ public interface PictureDAO {
 	 * @param id
 	 * @return
 	 */
-	public List<Picture> pushImageByRadmon();
+	public List<Picture> queryImagesOfRandmon();
 	
 	/**
 	 * 获得图片数量

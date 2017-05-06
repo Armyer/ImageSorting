@@ -5,6 +5,12 @@ import java.util.List;
 
 import com.geowind.is.domain.Picture;
 
+/**
+ * 
+ * @author jiang
+ * Date:2017-5-02
+ *
+ */
 public interface PictureService {
 	
 	

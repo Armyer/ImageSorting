@@ -1,7 +1,28 @@
 package com.geowind.is.domain;
 
+/**
+ * 图片类
+ * @author jiang 
+ * Date: 2017-5-01
+ *
+ */
 public class Picture {
-	
+
+	//图片id
+	public String pid;
+
+	//图片名字
+	public String pname;
+
+	//图片位置
+	public String location;
+
+	//是否有效
+	public int valid;
+
+	//备用
+	public String status;
+
 	public String getPid() {
 		return pid;
 	}
@@ -41,19 +62,5 @@ public class Picture {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
-	public String pid;
-	
-	public String pname;
-	
-	public String location;
-	
-	public int valid;
-	
-	public  String status;
-
-	
-	
-	
 
 }

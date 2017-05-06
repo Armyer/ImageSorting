@@ -11,30 +11,53 @@ import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.servlet.ServletConfig;
+
 import javax.servlet.ServletContext;
 
 import org.apache.commons.fileupload.FileItem;
 
-import com.geowind.is.dao.PictureDAO;
 import com.geowind.is.dao.daoIml.PictureDAOImpl;
 import com.geowind.is.domain.Picture;
 import com.geowind.is.service.PictureService;
 
+
+/**
+ * 
+ * @author jiang
+ * Date:2017-5-02
+ *
+ */
 public class PictureServiceImpl implements PictureService {
 
 	
 	private ServletContext sc;
 	private String savePath;
 
-	public void init(ServletConfig config) {
-		// 在web.xml中设置的一个初始化参数
-		savePath = config.getInitParameter("savePath");
-		sc = config.getServletContext();
+	
+	PictureDAOImpl pictureDAOImpl = new PictureDAOImpl();
+	
+	
+	/**
+	 * 以图搜图
+	 * @return
+	 */
+	public List<Picture> getImagesByImage(){
+		
+		return null;
+	}
+	
+	/**
+	 * 推送图片集
+	 * @return
+	 */
+	public List<Picture> pushImagesOfRandom(){
+		
+		List<Picture> pictureList = pictureDAOImpl.queryImagesOfRandmon();
+		
+		return pictureList;
 	}
 	
 	
-	PictureDAOImpl pictureDAOImpl = new PictureDAOImpl();
 	
 	/**
 	 * 上传图片集合

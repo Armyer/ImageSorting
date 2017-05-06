@@ -60,6 +60,9 @@ public class PictureServlet extends HttpServlet {
 		case "getImageOfRadmon":
 			getImageOfRadmon(req,resp);
 			break;
+		case "pushImagesByImage":
+			pushImagesByImage(req,resp);
+			break;
 		default:
 			break;
 
@@ -67,13 +70,30 @@ public class PictureServlet extends HttpServlet {
 
 	}
 	
+	
 	/**
+	 * 以图搜图
+	 * @param req
+	 * @param resp
+	 */
+	private void pushImagesByImage(HttpServletRequest req, HttpServletResponse resp) {
+
+		PictureServiceImpl pictureServiceImpl = new PictureServiceImpl();
+		
+		
+	}
+
+	/**
+	 * 第一次推送随机图片
 	 * 获得随机图片地址
 	 * @param req
 	 * @param resp
 	 */
 	  private void getImageOfRadmon(HttpServletRequest req, HttpServletResponse resp) {
+		
 		PictureServiceImpl pictureServiceImpl = new PictureServiceImpl();
+		
+		List<Picture> pictureList = pictureServiceImpl.pushImagesOfRandom();
 		
 		
 	}
