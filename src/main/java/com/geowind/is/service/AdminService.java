@@ -1,5 +1,7 @@
 package com.geowind.is.service;
 
+import java.util.List;
+
 import com.geowind.is.dao.AdminDAO;
 import com.geowind.is.dao.daoIml.AdminDAOImpl;
 import com.geowind.is.dao.daoIml.BaseDaoImpl;
@@ -20,5 +22,10 @@ public class AdminService {
 			return true;
 		}
 		return false;
+	}
+	
+	//µÃµ½adminµÄlist
+	public List<Admin> getAdmins(){
+		return adminDAO.getAdmin();
 	}
 }

@@ -1,7 +1,9 @@
 package com.geowind.is.dao.daoIml;
 
+import java.nio.channels.SelectableChannel;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
@@ -93,5 +95,11 @@ public class VolunteerDAOImpl extends BaseDaoImpl<Volunteer> implements
 				volunteer.getSex(), volunteer.getPhone(), volunteer.getEmail(),
 				volunteer.getRegistdate(), volunteer.getImage(),
 				volunteer.getValid(), volunteer.getStatus());
+	}
+
+	@Override
+	public List<Volunteer> getVolunteer() {
+		String sql="select * from volunteer where 1=?";
+		return queryForList(sql, 1);
 	}
 }
