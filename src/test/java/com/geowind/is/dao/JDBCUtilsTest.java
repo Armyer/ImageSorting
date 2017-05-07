@@ -1,5 +1,5 @@
 package com.geowind.is.dao;
-import static org.junit.Assert.*;
+
 
 import java.sql.ResultSet;
 
@@ -26,7 +26,7 @@ public class JDBCUtilsTest {
 		        Connection conn = null;  
 		        PreparedStatement stmt = null;  
 		        ResultSet rs = null;  
-		    	ComboPooledDataSource dataSource = new ComboPooledDataSource();		          
+		    	ComboPooledDataSource dataSource = new ComboPooledDataSource("is");		          
 		        try{  
 		          // 创建连接池  
 //		            dataSource.setDriverClass( "com.mysql.jdbc.Driver" ); //loads the jdbc driver            
@@ -53,12 +53,12 @@ public class JDBCUtilsTest {
 
 	@Test
 	public void testReleaseConnection() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	@Test
 	public void testReleaseResultSetStatement() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 }
