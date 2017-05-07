@@ -39,4 +39,6 @@
 		<url-pattern>/servlet/pictureServlet</url-pattern>
 	</servlet-mapping>
 
+
+
 </web-app>
