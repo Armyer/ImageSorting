@@ -31,7 +31,6 @@ public class AdminServlet extends HttpServlet {
 
 	private AdminService adminService = new AdminService();
 	private VolunteerService volunteerService = new VolunteerService();
-	private AdminDAO adminDAO = new AdminDAOImpl();
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -61,7 +60,7 @@ public class AdminServlet extends HttpServlet {
 				System.out.println(admin);
 				request.setAttribute("admins", admins);
 				// ×ª·¢
-				request.getRequestDispatcher("adminInfo.jsp").forward(request,
+				request.getRequestDispatcher("/adminInfo.jsp").forward(request,
 						response);
 				return;
 			}
@@ -79,7 +78,7 @@ public class AdminServlet extends HttpServlet {
 			for (Volunteer volunteer : volunteers) {
 				System.out.println(volunteer);
 				request.setAttribute("volunteers", volunteers);
-				request.getRequestDispatcher("user.jsp").forward(request,
+				request.getRequestDispatcher("/user.jsp").forward(request,
 						response);
 				return;
 			}
