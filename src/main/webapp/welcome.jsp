@@ -77,7 +77,7 @@
 
 					<div class="two_third dashboard_left">
 						<ul class="shortcuts">
-							<li><a href="" class="users"><span>用户信息</span></a></li>
+							<li><a href="${pageContext.request.contextPath }/adminServlet?method=user" class="users"><span>用户信息</span></a></li>
 							<li><a href="" class="gallery"><span>图册信息</span></a></li>
 							<li><a href="" class="analytics"><span>统计信息</span></a></li>
 						</ul>
@@ -185,9 +185,9 @@
 							</div>
 							<div class="widgetoptions">
 								<div class="right">
-									<a href="">查看所有用户</a>
+									<a href="${pageContext.request.contextPath }/adminServlet?method=adminInfo">查看所有的管理员</a>
 								</div>
-								<a href="">添加管理员</a>
+								<a href="welcome.jsp">刷新</a>
 							</div>
 							<div class="widgetcontent userlistwidget nopadding">
 								<ul>
@@ -228,7 +228,7 @@
 										</div> <!--info-->
 									</li>
 								</ul>
-								<a class="more" href="">查看更多用户</a>
+								<a class="more" href="${pageContext.request.contextPath }/adminServlet?method=user">查看更多用户</a>
 							</div>
 						</div>
 					</div>

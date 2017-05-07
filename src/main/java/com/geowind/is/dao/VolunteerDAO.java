@@ -1,6 +1,7 @@
 package com.geowind.is.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import com.geowind.is.domain.Volunteer;
 
@@ -60,4 +61,10 @@ public interface VolunteerDAO {
 	 * @throws SQLException
 	 */
 	public void add(Volunteer volunteer) throws SQLException ;
+	
+	/**
+	 * 返回volunteer表中的所有的volunteer
+	 * @return volunteer
+	 */
+	public List<Volunteer> getVolunteer();
 }

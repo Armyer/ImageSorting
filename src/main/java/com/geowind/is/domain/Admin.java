@@ -133,6 +133,21 @@ public class Admin {
 		this.valid = valid;
 		this.status = status;
 	}
+	public Admin(String username, String password, Date birthday,
+			String sex, int phone, String email, Date registdate, String image,
+			int valid, String status) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.birthday = birthday;
+		this.sex = sex;
+		this.phone = phone;
+		this.email = email;
+		this.registdate = registdate;
+		this.image = image;
+		this.valid = valid;
+		this.status = status;
+	}
 
 	public Admin() {
 		super();

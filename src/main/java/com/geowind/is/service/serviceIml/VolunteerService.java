@@ -1,15 +1,16 @@
 package com.geowind.is.service.serviceIml;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.omg.CORBA.UserException;
-import cn.itcast.commons.CommonUtils;
 
 import com.geowind.is.dao.VolunteerDAO;
 import com.geowind.is.dao.daoIml.VolunteerDAOImpl;
 import com.geowind.is.domain.Volunteer;
 import com.geowind.is.exception.VolunteerException;
 
+import cn.itcast.commons.CommonUtils;
 /**
  * 用户模块业务层
  *
@@ -17,6 +18,13 @@ import com.geowind.is.exception.VolunteerException;
 public class VolunteerService {
 	private VolunteerDAO volunteerDAO = new VolunteerDAOImpl();
 
+	/*
+	 * 返回一个volunteer的list
+	 */
+	public List<Volunteer> getVolunteers(){
+		
+		return volunteerDAO.getVolunteer();
+	}
 	/**
 	 * 修改密码
 	 * 

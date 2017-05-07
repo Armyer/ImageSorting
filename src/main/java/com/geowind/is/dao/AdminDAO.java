@@ -1,5 +1,7 @@
 package com.geowind.is.dao;
 
+import java.util.List;
+
 import com.geowind.is.domain.Admin;
 import com.geowind.is.domain.Volunteer;
 
@@ -25,4 +27,10 @@ public interface AdminDAO {
 	 * @return admin
 	 */
 	public abstract Admin getAdmin(String username,String password);
+	
+	/**
+	 * 得到的admin的list
+	 */
+	public List<Admin> getAdmin();
+
 }
