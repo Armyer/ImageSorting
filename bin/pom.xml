@@ -105,13 +105,13 @@
 			<version>7.0</version>
 		</dependency>
 
-		<!-- mysql 
+		<!-- mysql -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.38</version>
 			<scope>runtime</scope>
-		</dependency>-->
+		</dependency>
 
 		<dependency>
 			<groupId>commons-dbutils</groupId>
@@ -128,7 +128,7 @@
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
+			<version>1.2.9</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -142,9 +142,32 @@
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.2.1</version> <!-- makesure correct version here -->
 		</dependency>
+		
+		<dependency>
+    <groupId>com.google.code.gson</groupId>
+    <artifactId>gson</artifactId>
+    <version>2.2.4</version>
+</dependency>
 
+
+		<dependency>
+    <groupId>com.google.code.maven-play-plugin.com.mchange</groupId>
+    <artifactId>c3p0-oracle-thin-extras</artifactId>
+    <version>0.9.5</version>
+</dependency>
+		
+		<dependency>
+    <groupId>c3p0</groupId>
+    <artifactId>c3p0</artifactId>
+    <version>0.9.1.2</version>
+</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.3.2</version>
+		</dependency>
+	
 	</dependencies>
-
 
 	<build>
 		<finalName>ImageSorting</finalName>
@@ -154,8 +177,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>1.7</source>
+					<target>1.7</target>
 				</configuration>
 			</plugin>
 		</plugins>

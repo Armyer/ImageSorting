@@ -48,8 +48,7 @@
 			</div>
 
 			<form id="login"
-				action="${pageContext.request.contextPath }/adminServlet"
-				method="post">
+				action="${pageContext.request.contextPath }/adminServlet?method=adminLogin" method="post">
 
 				<div class="username">
 					<div class="usernameinner">

@@ -13,7 +13,9 @@ public class SearcherTest {
 	@Test
 	public void testSearcherByPic() throws IOException{
 		
-		String path = "E:\\env\\test-pic\\车站\\车站1.jpg";
+		//String path = "E:\\env\\test-pic\\车站\\车站1.jpg";
+		
+		String path = "E:\\env\\apache-tomcat-9.0.0.M19\\webapps\\ImageSorting\\..\\uploads\\c941a17910487.jpg";
 		
 		Searcher searcher = new Searcher();
 		

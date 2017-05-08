@@ -30,7 +30,7 @@ public class IndexerTest {
 		
 		Indexer index = new Indexer();
 		
-		String path = "E:\\env\\test-pic\\³µÕ¾\\³µÕ¾1.jpg";
+		String path = "E:\\env\\test-pic\\atm";
 		
 		int result = index.makeIndex(path);
 		
