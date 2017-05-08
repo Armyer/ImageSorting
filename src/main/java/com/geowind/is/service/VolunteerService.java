@@ -4,8 +4,6 @@ import java.sql.SQLException;
 
 import org.omg.CORBA.UserException;
 
-import cn.itcast.commons.CommonUtils;
-
 import com.geowind.is.dao.VolunteerDAO;
 import com.geowind.is.dao.daoIml.VolunteerDAOImpl;
 import com.geowind.is.domain.Volunteer;
@@ -28,7 +26,6 @@ public class VolunteerService {
 	 */
 	public void updatePassword(String vid, String newPass, String oldPass)
 			throws UserException, VolunteerException {
-
 		try {
 			/*
 			 * 1. 校验老密码
@@ -82,9 +79,9 @@ public class VolunteerService {
 	 * @param user
 	 */
 	public void regist(Volunteer volunteer) {
-		
-		// 1. 数据的补齐   CommonUtils.uuid()返回一个不重复的字符串
-		//volunteer.setValid(Integer.parseInt(CommonUtils.uuid()));
+
+		// 1. 数据的补齐 CommonUtils.uuid()返回一个不重复的字符串
+		// volunteer.setValid(Integer.parseInt(CommonUtils.uuid()));
 		if (volunteer != null) {
 			// 2. 向数据库插入
 			try {

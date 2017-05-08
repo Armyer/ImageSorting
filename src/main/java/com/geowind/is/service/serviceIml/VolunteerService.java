@@ -11,6 +11,7 @@ import com.geowind.is.domain.Volunteer;
 import com.geowind.is.exception.VolunteerException;
 
 import cn.itcast.commons.CommonUtils;
+
 /**
  * 用户模块业务层
  *
@@ -21,10 +22,11 @@ public class VolunteerService {
 	/*
 	 * 返回一个volunteer的list
 	 */
-	public List<Volunteer> getVolunteers(){
-		
+	public List<Volunteer> getVolunteers() {
+
 		return volunteerDAO.getVolunteer();
 	}
+
 	/**
 	 * 修改密码
 	 * 
@@ -90,7 +92,7 @@ public class VolunteerService {
 	 */
 	public void regist(Volunteer volunteer) {
 		// 1. 数据的补齐
-		//volunteer.setValid(CommonUtils.uuid());
+		// volunteer.setValid(CommonUtils.uuid());
 		// 2. 向数据库插入
 		try {
 			volunteerDAO.add(volunteer);
@@ -98,4 +100,27 @@ public class VolunteerService {
 			throw new RuntimeException(e);
 		}
 	}
+
+	public List<Volunteer> showNewuser() {
+		return volunteerDAO.getVolunteers();
+	}
+
+	/**
+	 * 显示时间差
+	 * 
+	 * @return
+	 */
+	public int getTime() {
+		return volunteerDAO.time();
+	}
+
+	/**
+	 * 
+	 * @param username
+	 * @param password
+	 */
+	public void mergePassword(String username, String password) {
+		volunteerDAO.mergePwd(username, password);
+	}
+
 }

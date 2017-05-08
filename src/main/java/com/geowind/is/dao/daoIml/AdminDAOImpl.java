@@ -6,7 +6,7 @@ import com.geowind.is.dao.AdminDAO;
 import com.geowind.is.domain.Admin;
 import com.geowind.is.domain.Volunteer;
 
-public  class AdminDAOImpl extends BaseDaoImpl<Admin> implements AdminDAO {
+public class AdminDAOImpl extends BaseDaoImpl<Admin> implements AdminDAO {
 
 	@Override
 	public void mergeVolunteer(Volunteer volunteer) {
@@ -26,5 +26,16 @@ public  class AdminDAOImpl extends BaseDaoImpl<Admin> implements AdminDAO {
 		return queryForList(sql, 1);
 	}
 
+	@Override
+	public void mergeAdmin(String username, String password, String email,
+			String sex) {
+		String sql="update admin set username=?,password=?,email=?,sex=?";
+		update(sql, username,password,email,sex);
+	}
 
+	@Override
+	public void deleteUserInfo(int id) {
+		String sql="delete from volunteer where vid=?";
+		update(sql, id);
+	}
 }
