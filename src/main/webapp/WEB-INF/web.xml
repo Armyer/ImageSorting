@@ -39,6 +39,7 @@
 		<url-pattern>/servlet/pictureServlet</url-pattern>
 	</servlet-mapping>
 
+
 	<servlet>
 		<servlet-name>VolunteerServlet</servlet-name>
 		<servlet-class>com.geowind.is.servlet.VolunteerServlet</servlet-class>
@@ -49,4 +50,5 @@
 		<url-pattern>/volunteerServlet</url-pattern>
 	</servlet-mapping>
 	
+
 </web-app>

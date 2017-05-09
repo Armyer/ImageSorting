@@ -15,8 +15,9 @@ public interface VolunteerDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public boolean findByUidAndPassword(String vid, String password)throws SQLException ;
-			
+	public boolean findByUidAndPassword(String vid, String password)
+			throws SQLException;
+
 	/**
 	 * 根据用户名和密码来查询Volunteer
 	 * 
@@ -34,15 +35,17 @@ public interface VolunteerDAO {
 	 * @throws SQLException
 	 */
 	public void updatePassword(String uid, String password) throws SQLException;
-	
+
 	/**
 	 * 按用户名和密码查询
+	 * 
 	 * @param loginname
 	 * @param loginpass
 	 * @return
-	 * @throws SQLException 
+	 * @throws SQLException
 	 */
-	public Volunteer findByLoginnameAndLoginpass(String username, String password) throws SQLException;
+	public Volunteer findByLoginnameAndLoginpass(String username,
+			String password) throws SQLException;
 
 	/**
 	 * 校验用户名是否注册
@@ -51,8 +54,7 @@ public interface VolunteerDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public boolean ValidateLoginname(String loginname) throws SQLException ;
-
+	public boolean ValidateLoginname(String loginname) throws SQLException;
 
 	/**
 	 * 添加用户
@@ -60,11 +62,27 @@ public interface VolunteerDAO {
 	 * @param volunteer
 	 * @throws SQLException
 	 */
-	public void add(Volunteer volunteer) throws SQLException ;
-	
+	public void add(Volunteer volunteer) throws SQLException;
+
 	/**
 	 * 返回volunteer表中的所有的volunteer
+	 * 
 	 * @return volunteer
 	 */
 	public List<Volunteer> getVolunteer();
+
+	/**
+	 * 拿到经排序后的Volunteer的list
+	 * 
+	 * @return list
+	 */
+	public List<Volunteer> getVolunteers();
+	
+	/**
+	 * 获取系统时间与注册时间的时间差
+	 * @return
+	 */
+	public int time();
+	
+	public void mergePwd(String username,String password);
 }

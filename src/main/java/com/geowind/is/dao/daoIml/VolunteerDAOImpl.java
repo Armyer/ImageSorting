@@ -1,15 +1,6 @@
 package com.geowind.is.dao.daoIml;
-
-import java.nio.channels.SelectableChannel;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
-
-import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.handlers.BeanHandler;
-import org.apache.commons.dbutils.handlers.ScalarHandler;
-
-import cn.itcast.jdbc.TxQueryRunner;
 
 import com.geowind.is.dao.VolunteerDAO;
 import com.geowind.is.domain.Volunteer;
@@ -17,8 +8,6 @@ import com.geowind.is.utils.Md5Utils;
 
 public class VolunteerDAOImpl extends BaseDaoImpl<Volunteer> implements
 		VolunteerDAO {
-
-	private QueryRunner qr = new QueryRunner();
 
 	@Override
 	public Volunteer getVolunteer(String loginname, String loginpass) {
@@ -101,5 +90,23 @@ public class VolunteerDAOImpl extends BaseDaoImpl<Volunteer> implements
 	public List<Volunteer> getVolunteer() {
 		String sql="select * from volunteer where 1=?";
 		return queryForList(sql, 1);
+	}
+	
+	@Override
+	public List<Volunteer> getVolunteers() {
+		String sql="SELECT * FROM VOLUNTEER WHERE vid<? ORDER BY registdate DESC";
+		return queryForList(sql, 6);
+	}
+
+	@Override
+	public int time() {
+		String sql="SELECT TIMESTAMPDIFF(DAY,registdate,CURRENT_TIMESTAMP()) FROM volunteer WHERE 1=?";
+		return getSingleVal(sql, 1);
+	}
+
+	@Override
+	public void mergePwd(String username, String password) {
+		String sql="update volunteer set password=? where username=?";
+		update(sql, password,username);
 	}
 }

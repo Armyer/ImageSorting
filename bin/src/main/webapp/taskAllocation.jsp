@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>博客管理页面</title>
+<title>任务分配页面</title>
 <link rel="stylesheet" href="css/style.default.css" type="text/css" />
 <script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
 <script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
