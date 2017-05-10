@@ -17,7 +17,8 @@ public class InterestServiceImplTest {
 		String vid = "1";
 
 		List<Picture> finalPicture = interestServiceImpl.searchImageByInterest(vid);
-
+		
+		
 		for (int i = 0; i < finalPicture.size(); i++) {
 
 			System.out.println(finalPicture.get(i).getLocation() + ", " + finalPicture.get(i).getPname());
