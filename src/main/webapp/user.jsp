@@ -5,18 +5,30 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript">
-	$(function() {
-		$(".delete").click(function() {
-           var flag=confirm("确定要删除该用户的信息吗");
-           return flag;
-		});
-	});
-</script>
+<style type="text/css">
+table tbody tr td {
+	border: 1px solid #ebebeb;
+}
+
+table tbody tr td a {
+	background: url(images/thinkcss.gif) left 0;
+	color: #fff;
+	text-decoration: none;
+	height: 30px;
+	float: left;
+	cursor: hand;
+	margin: 0 5px 0 0;
+}
+
+table tbody tr td a:HOVER {
+	background: url(images/thinkcss.gif) left -30px;
+	height: 30px;
+}
+</style>
 </head>
 <body>
 	<center>
-		<table border="1" cellpadding="5" cellspacing="1">
+		<table cellspacing="0">
 			<thead align="center">用户信息表
 			</thead>
 			<tbody>
@@ -44,8 +56,9 @@
 						<td>${volunteer.birthday }</td>
 						<td>${volunteer.status }</td>
 						<td><a href="updatePassword.jsp">修改密码</a></td>
-						<td><a class="delete"
-							href="${pageContext.request.contextPath }/adminServlet?method=deleteUser&id=${volunteer.vid}">删除</a></td>
+						<td><a id="delete"
+							href="${pageContext.request.contextPath }/adminServlet?method=deleteUser&id=${volunteer.vid}"
+							onclick=" return confirm('确定要删除${volunteer.username }的信息吗?')">删除</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

@@ -94,8 +94,8 @@ public class VolunteerDAOImpl extends BaseDaoImpl<Volunteer> implements
 	
 	@Override
 	public List<Volunteer> getVolunteers() {
-		String sql="SELECT * FROM VOLUNTEER WHERE vid<? ORDER BY registdate DESC";
-		return queryForList(sql, 6);
+		String sql="SELECT  * FROM VOLUNTEER WHERE STATUS=1 ORDER BY registdate DESC LIMIT ?,?";
+		return queryForList(sql,0,5);
 	}
 
 	@Override

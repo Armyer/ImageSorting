@@ -114,7 +114,6 @@ public class AdminServlet extends HttpServlet {
 		List<Volunteer> volunteers = volunteerService.showNewuser();
 		if (volunteers != null) {
 			for (Volunteer volunteer : volunteers) {
-				System.out.println(volunteer);
 				request.setAttribute("volunteers", volunteers);
 				request.getRequestDispatcher("/welcome.jsp").forward(request,
 						response);
@@ -130,7 +129,6 @@ public class AdminServlet extends HttpServlet {
 		List<Admin> admins = adminService.getAdmins();
 		if (admins != null) {
 			for (Admin admin : admins) {
-				System.out.println(admin);
 				request.setAttribute("admins", admins);
 				// 转发
 				request.getRequestDispatcher("/adminInfo.jsp").forward(request,
@@ -149,7 +147,6 @@ public class AdminServlet extends HttpServlet {
 		// 遍历并判断
 		if (volunteers != null) {
 			for (Volunteer volunteer : volunteers) {
-				System.out.println(volunteer);
 				request.setAttribute("volunteers", volunteers);
 				request.getRequestDispatcher("/user.jsp").forward(request,
 						response);

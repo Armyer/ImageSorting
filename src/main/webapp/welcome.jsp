@@ -189,7 +189,7 @@
 						<div class="widgetoptions">
 							<div class="right">
 								<a
-									href="${pageContext.request.contextPath }/adminServlet?method=adminInfo">查看所有的管理员</a>
+									href="${pageContext.request.contextPath }/adminServlet?method=adminInfo">查看其他的管理员</a>
 							</div>
 							<a
 								href="${pageContext.request.contextPath }/adminServlet?method=userSorting">刷新</a>
