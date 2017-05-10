@@ -22,7 +22,7 @@ public class VolunteerServlet extends HttpServlet {
 
 		 	request.setCharacterEncoding("utf-8");
 		    response.setCharacterEncoding("utf-8");
-		    String name = request.getParameter("name");
+		    String name = request.getParameter("username");
 		    String password = request.getParameter("password");
 		    System.out.println("ÓÃ»§Ãû£º"+name+" ÃÜÂë£º"+password);
 		    
