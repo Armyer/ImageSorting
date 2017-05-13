@@ -5,7 +5,7 @@
 	version="3.1">
 	<display-name>ImageSorting</display-name>
 	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>uploadImage.jsp</welcome-file>
 	</welcome-file-list>
 	<context-param>
 		<param-name>encoding</param-name>
@@ -30,13 +30,13 @@
 		<!-- 设置初始化参数 -->
 		<init-param>
 			<param-name>savePath</param-name>
-			<param-value>..\uploads</param-value>
+			<param-value>../uploads</param-value>
 		</init-param>
 	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>PictureServlet</servlet-name>
-		<url-pattern>/servlet/pictureServlet</url-pattern>
+		<url-pattern>/pictureServlet</url-pattern>
 	</servlet-mapping>
 
 
@@ -50,5 +50,47 @@
 		<url-pattern>/volunteerServlet</url-pattern>
 	</servlet-mapping>
 	
+	
+	<servlet>
+		<servlet-name>InterestServlet</servlet-name>
+		<servlet-class>com.geowind.is.servlet.InterestServlet</servlet-class>
+	</servlet>
+	
+	
+	<servlet-mapping>
+		<servlet-name>InterestServlet</servlet-name>
+		<url-pattern>/interestServlet</url-pattern>	
+	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>IndexerServlet</servlet-name>
+		<servlet-class>com.geowind.is.servlet.IndexerServlet</servlet-class>
+		
+		<!-- 设置初始化参数 -->
+		<init-param>
+			<param-name>savePath</param-name>
+			<param-value>../uploads</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>indexerPath</param-name>
+			<param-value>../index</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>IndexerServlet</servlet-name>
+		<url-pattern>/indexerServlet</url-pattern>
+	</servlet-mapping>	
+	
+	<servlet>
+		<servlet-name>NoAdaptorLabelServlet</servlet-name>
+		<servlet-class>com.geowind.is.servlet.NoAdaptorLabelServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>NoAdaptorLabelServlet</servlet-name>
+		<url-pattern>/noAdaptorLabelServlet</url-pattern>
+	</servlet-mapping>
+	
 </web-app>

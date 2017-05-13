@@ -2,6 +2,7 @@ package com.geowind.is.service.serviceIml;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -120,7 +121,12 @@ public class PictureServiceImpl implements PictureService {
 					Picture picture = new Picture();
 					picture.setPname(tempFile.getName());
 					picture.setLocation(path);
+					//…Ë÷√ ±º‰
+					Date date = new Date();	
+					SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");		
+					picture.setDate(simpleDateFormat.format(date));
 					picture.setValid(1);
+					
 					pictureList.add(picture);
 					
 					

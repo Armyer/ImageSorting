@@ -19,7 +19,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import com.geowind.is.domain.Picture;
 import com.geowind.is.service.serviceIml.PictureServiceImpl;
 
-public class PictureServlet extends HttpServlet {
+public class PictureServlet extends BasicServlet {
 
 	private static final long serialVersionUID = -7744625344830285257L;
 	private ServletContext sc;
@@ -44,9 +44,9 @@ public class PictureServlet extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
 
-		String op = req.getParameter("op");
+		String method = req.getParameter("method");
 
-		switch (op) {
+		switch (method) {
 
 		case "uploadImage":
 			uploadImage(req, resp);
@@ -66,7 +66,7 @@ public class PictureServlet extends HttpServlet {
 	
 	
 	/**
-	 * 以图搜图
+	 * 根据兴趣以图搜图
 	 * @param req
 	 * @param resp
 	 */
@@ -83,11 +83,18 @@ public class PictureServlet extends HttpServlet {
 	 * @param req
 	 * @param resp
 	 */
-	  private void getImageOfRadmon(HttpServletRequest req, HttpServletResponse resp) {
+	  private void getImageOfRadmon(HttpServletRequest requset, HttpServletResponse response) {
 		
 		PictureServiceImpl pictureServiceImpl = new PictureServiceImpl();
 		
 		List<Picture> pictureList = pictureServiceImpl.pushImagesOfRandom();
+		
+		try {
+			this.out(response, pictureList);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		
 		
 	}

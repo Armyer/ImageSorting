@@ -25,9 +25,10 @@ public class PictureDAOImpl extends BaseDaoImpl<Picture> implements PictureDAO {
 			
 			Picture picture = pictureList.get(i);
 			
-			String sql = "insert into picture(pid,pname,location,valid,status) values (?,?,?,?,?)";
+			String sql = "insert into picture(pname,location,valid,status,uploaddate) values (?,?,?,?,?)";
 			
-			Object[] params ={picture.getPid(),picture.getPname(),picture.getLocation(),picture.getValid(),picture.getStatus()};
+			Object[] params ={picture.getPname(),picture.getLocation(),
+					picture.getValid(),picture.getStatus(),picture.getDate()};
 			
 			
 			//System.out.println(" "+picture.getPid()+" ,"+picture.getPname());

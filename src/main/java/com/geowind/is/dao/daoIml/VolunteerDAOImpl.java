@@ -109,4 +109,12 @@ public class VolunteerDAOImpl extends BaseDaoImpl<Volunteer> implements
 		String sql="update volunteer set password=? where username=?";
 		update(sql, password,username);
 	}
+
+	@Override
+	public int queryIdByName(String username) {
+		String sql = "select vid from volunteer where username = ?";
+		Object[] args = {username};
+		Volunteer volunteer = query(sql, args);
+		return volunteer.getVid();
+	}
 }
