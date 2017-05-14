@@ -63,7 +63,11 @@
 		<ul>
 			<li><a href="taskAllocation.jsp">任务分配系统</a></li>
 			<li><a href="labelDecision.jsp">标签判定系统</a></li>
-			<li><a href="labelDecision.jsp">图片存储索引系统</a></li>
+			<li><a href="pictureIndex.jsp">图片存储索引系统</a></li>
+			<li><a class="more"
+				href="${pageContext.request.contextPath }/adminServlet?method=user">查看更多用户</a></li>
+			<li><a
+				href="${pageContext.request.contextPath }/adminServlet?method=adminInfo">查看其他的管理员</a></li>
 			<li><a href="#error" class="error">错误页面</a> <span class="arrow"></span>
 				<ul id="error">
 					<li><a href="error.jsp">错误页面</a></li>
@@ -81,13 +85,13 @@
 						<li><a
 							href="${pageContext.request.contextPath }/adminServlet?method=user"
 							class="users"><span>用户设置</span></a></li>
-						<li><a href="" class="gallery"><span>图册信息</span></a></li>
+						<li><a href="pictureIndex.jsp" class="gallery"><span>图册信息</span></a></li>
 						<li><a href="" class="analytics"><span>统计信息</span></a></li>
 					</ul>
 
 					<br clear="all" />
 
-					<div class="contenttitle2 nomargintop" >
+					<div class="contenttitle2 nomargintop">
 						<h3>历史记录</h3>
 					</div>
 					<!--contenttitle-->
@@ -177,7 +181,7 @@
 					</table>
 
 					<br />
-					
+
 				</div>
 				<!--two_third dashboard_left -->
 
@@ -187,10 +191,6 @@
 							<h3>最近活跃用户</h3>
 						</div>
 						<div class="widgetoptions">
-							<div class="right">
-								<a
-									href="${pageContext.request.contextPath }/adminServlet?method=adminInfo">查看其他的管理员</a>
-							</div>
 							<a
 								href="${pageContext.request.contextPath }/adminServlet?method=userSorting">刷新</a>
 						</div>
@@ -208,8 +208,6 @@
 									</li>
 								</c:forEach>
 							</ul>
-							<a class="more"
-								href="${pageContext.request.contextPath }/adminServlet?method=user">查看更多用户</a>
 						</div>
 					</div>
 				</div>

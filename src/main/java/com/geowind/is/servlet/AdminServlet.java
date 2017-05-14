@@ -14,9 +14,14 @@ import javax.servlet.http.HttpSession;
 
 import org.omg.CORBA.UserException;
 
+import com.geowind.is.dao.PictureDAO;
+import com.geowind.is.dao.daoIml.PictureDAOImpl;
+import com.geowind.is.domain.AdaptorLabel;
 import com.geowind.is.domain.Admin;
+import com.geowind.is.domain.Picture;
 import com.geowind.is.domain.Volunteer;
 import com.geowind.is.exception.VolunteerException;
+import com.geowind.is.service.AdaptorLabelService;
 import com.geowind.is.service.AdminService;
 import com.geowind.is.service.serviceIml.VolunteerService;
 
@@ -26,6 +31,8 @@ public class AdminServlet extends HttpServlet {
 
 	private AdminService adminService = new AdminService();
 	private VolunteerService volunteerService = new VolunteerService();
+	private AdaptorLabelService adaptorLabelService = new AdaptorLabelService();
+	private PictureDAO pictureDAO = new PictureDAOImpl();
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -44,6 +51,41 @@ public class AdminServlet extends HttpServlet {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
+	}
+
+	// 根据输入的标签名显示图片
+	public void index(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// 建立picture的list的集合
+		List<Picture> pictures = new ArrayList<Picture>();
+		// 获取客户端的请求index
+		String index = request.getParameter("pictureName");
+		// 获取AdaptorLabel的集合
+		if (!index.equals("") && index != null) {
+			List<AdaptorLabel> paths = adaptorLabelService
+					.getPictureLoaction(index);
+			for (AdaptorLabel adaptorLabel : paths) {
+				String pid = adaptorLabel.getPid();
+				int id = Integer.parseInt(pid);
+				Picture picture = pictureDAO.getPicture(id);
+				pictures.add(picture);
+			}
+
+			if (pictures != null) {
+				for (Picture p : pictures) {
+					System.out.println(p);
+					// 将图片的位置保存的request中
+					request.setAttribute("pictures", pictures);
+				}
+				// 进行转发
+				request.getRequestDispatcher("/pictureIndex.jsp").forward(
+						request, response);
+				/* System.out.println("----"); */
+			}
+		} else {
+			response.sendRedirect(request.getContextPath() + "/error.jsp");
+		}
+
 	}
 
 	// 删除用户

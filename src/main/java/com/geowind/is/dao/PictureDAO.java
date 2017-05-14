@@ -34,5 +34,11 @@ public interface PictureDAO {
 	 * @return
 	 */
 	public String getImageNum();
+	
+	/**
+	 * 根据id来获取相应的图片
+	 * @return
+	 */
+	public Picture getPicture(int pid);
 
 }

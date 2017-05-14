@@ -22,5 +22,4 @@ public interface PictureService {
 
 	public long upLoadImages(Iterator<Picture> i,String path);
 	
-	
 }

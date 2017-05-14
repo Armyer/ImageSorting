@@ -47,6 +47,8 @@ public interface Dao<T> {
 	 */
 	<V> V getSingleVal(String sql, Object ... args);
 	
+	<V> List<V> getListSingleVal(String sql, Object ... args);
+	
 	/**
 	 * 执行批量更新操作
 	 * @param sql: 待执行的 SQL 语句
