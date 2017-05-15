@@ -15,16 +15,8 @@ import com.geowind.is.service.serviceIml.NoAdaptorLabelServiceImpl;
 import com.geowind.is.service.serviceIml.PictureServiceImpl;
 import com.geowind.is.service.serviceIml.VolunteerService;
 
-<<<<<<< HEAD
-public class NoAdaptorLabelServlet  extends BasicServlet{
-=======
-public class NoAdaptorLabelServlet  extends HttpServlet{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
->>>>>>> 91a95ac14e16c6ae0f5d8489cf3f59bdc9639c52
 
+public class NoAdaptorLabelServlet  extends BasicServlet{
 
 
 
@@ -99,7 +91,7 @@ public class NoAdaptorLabelServlet  extends HttpServlet{
 		//获得图片名字
 		PictureServiceImpl pictureServiceImpl = new PictureServiceImpl();
 		//获得图片ID
-		String pid = pictureServiceImpl.getPidByPname(getPnameByURL(url));
+		int pid = pictureServiceImpl.getPidByPname(getPnameByURL(url));
 		
 
 		NoAdaptorLabel noAdaptorLabel = new NoAdaptorLabel();
@@ -110,7 +102,7 @@ public class NoAdaptorLabelServlet  extends HttpServlet{
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");		
 		noAdaptorLabel.setMakerDate(simpleDateFormat.format(date));
 		
-		noAdaptorLabel.setPid(pid);
+		noAdaptorLabel.setPid(String.valueOf(pid));
 		noAdaptorLabel.setValid(1);
 		
 		NoAdaptorLabelServiceImpl noAdaptorLabelServiceImpl = new NoAdaptorLabelServiceImpl();
