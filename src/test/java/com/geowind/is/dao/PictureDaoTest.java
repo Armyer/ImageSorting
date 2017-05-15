@@ -22,7 +22,7 @@ public class PictureDaoTest {
 		for(int i = 10;i<15;i++){
 			Picture picture = new Picture();
 			String s = String.valueOf(i);
-			picture.setPid(s);
+			//picture.setPid(s);
 			picture.setLocation("5"+s);
 			picture.setPname(s);
 			picture.setStatus(s);

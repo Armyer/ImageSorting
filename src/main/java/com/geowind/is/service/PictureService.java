@@ -23,9 +23,11 @@ public interface PictureService {
 	
 	public long upLoadImages(Iterator<Picture> i,String path);
 	
+
 	//Ëæ»úÍÆÍ¼
 	public List<Picture> pushImagesOfRandom();
 	
 	
-	public String getPidByPname(String pname);
+	public int getPidByPname(String pname);
+
 }

@@ -12,7 +12,6 @@ import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
 import javax.servlet.ServletContext;
 
 import org.apache.commons.fileupload.FileItem;
@@ -21,128 +20,120 @@ import com.geowind.is.dao.daoIml.PictureDAOImpl;
 import com.geowind.is.domain.Picture;
 import com.geowind.is.service.PictureService;
 
-
 /**
  * 
- * @author jiang
- * Date:2017-5-02
+ * @author jiang Date:2017-5-02
  *
  */
 public class PictureServiceImpl implements PictureService {
 
-	
 	private ServletContext sc;
 	private String savePath;
 
-	
 	PictureDAOImpl pictureDAOImpl = new PictureDAOImpl();
-	
-	
+
 	/**
 	 * 以图搜图
+	 * 
 	 * @return
 	 */
-	public List<Picture> getImagesByImage(){
-		
+	public List<Picture> getImagesByImage() {
+
 		return null;
 	}
-	
+
 	/**
 	 * 推送图片集
+	 * 
 	 * @return
 	 */
-	public List<Picture> pushImagesOfRandom(){
-		
+	public List<Picture> pushImagesOfRandom() {
+
 		List<Picture> pictureList = pictureDAOImpl.queryImagesOfRandmon();
-		
+
 		return pictureList;
 	}
-	
-	
-	
+
 	/**
 	 * 上传图片集合
 	 */
 	public long upLoadPictureList(List<Picture> pictureList) {
-		
+
 		long result = pictureDAOImpl.insertImages(pictureList);
-		
+
 		return result;
 	}
-	
-	
+
 	/**
 	 * 获得随机图片进行推送
+	 * 
 	 * @return
 	 */
-	public HashSet<Picture> getImagesOfRadmon(){
-		
-		
+	public HashSet<Picture> getImagesOfRadmon() {
+
 		return null;
 	}
 
-
 	/**
 	 * 上传图片集合
-	 * @throws UnsupportedEncodingException 
+	 * 
+	 * @throws UnsupportedEncodingException
 	 */
-	public long upLoadImages(Iterator<Picture> itr,String realpath)  {
-		long result =0;
+	public long upLoadImages(Iterator<Picture> itr, String realpath) {
+		long result = 0;
 		List<Picture> pictureList = new ArrayList<>();
-		try{
-		while (itr.hasNext()) {
-			
-			FileItem item = (FileItem) itr.next();
-			if (item.isFormField()) {
-				System.out.println("表单参数名:" + item.getFieldName() + "，表单参数值:" + item.getString("UTF-8"));
-			}else {
-				if (item.getName() != null && !item.getName().equals("")) {
-					
-					//时间戳
-					String timeName = toHex(new Date().getTime());
-					
-					item.setFieldName(timeName);
-					
-//					System.out.println("上传文件的大小:" + item.getSize());
-//					System.out.println("上传文件的类型:" + item.getContentType());
-//					System.out.println("上传文件的名称:" + item.getName());
-//					System.out.println("上传文件的名称1:" + item.getFieldName());
-					
-					File tempFile = new File(item.getFieldName()+getRandomNum()+getSuffixOfImage(item.getName()));
-								
-					String path = checkExist(realpath);	
-					//上传文件的保存路径
-					File file = new File(path, tempFile.getName());
-					item.write(file);
-				
-					/*
-					 * 插入数据库图片数据
-					 */
-					Picture picture = new Picture();
-					picture.setPname(tempFile.getName());
-					picture.setLocation(path);
-					//设置时间
-					Date date = new Date();	
-					SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");		
-					picture.setDate(simpleDateFormat.format(date));
-					picture.setValid(1);
-					
-					pictureList.add(picture);
-					
-					
+
+		try {
+			while (itr.hasNext()) {
+
+				FileItem item = (FileItem) itr.next();
+				if (item.isFormField()) {
+					System.out.println("表单参数名:" + item.getFieldName()
+							+ "，表单参数值:" + item.getString("UTF-8"));
+				} else {
+					if (item.getName() != null && !item.getName().equals("")) {
+
+						// 时间戳
+						String timeName = toHex(new Date().getTime());
+
+						item.setFieldName(timeName);
+
+						// System.out.println("上传文件的大小:" + item.getSize());
+						// System.out.println("上传文件的类型:" +
+						// item.getContentType());
+						// System.out.println("上传文件的名称:" + item.getName());
+						// System.out.println("上传文件的名称1:" +
+						// item.getFieldName());
+
+						File tempFile = new File(item.getFieldName()
+								+ getRandomNum()
+								+ getSuffixOfImage(item.getName()));
+
+						String path = checkExist(realpath);
+						// 上传文件的保存路径
+						File file = new File(path, tempFile.getName());
+						item.write(file);
+
+						/*
+						 * 插入数据库图片数据
+						 */
+						Picture picture = new Picture();
+						picture.setPname(tempFile.getName());
+						picture.setLocation(path);
+						picture.setValid(1);
+						pictureList.add(picture);
+					}
 				}
 			}
-		}
-		
-		PictureServiceImpl pictureServiceImpl = new PictureServiceImpl();
-		result = pictureServiceImpl.upLoadPictureList(pictureList);
-		
-		}catch(Exception e){
+
+			PictureServiceImpl pictureServiceImpl = new PictureServiceImpl();
+			result = pictureServiceImpl.upLoadPictureList(pictureList);
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return result;
 	}
-
 	
 	  /**
 	  * 获取8位不重复随机码（取当前时间戳转化为十六进制）
@@ -214,7 +205,7 @@ public class PictureServiceImpl implements PictureService {
 		    }
 
 		@Override
-		public String getPidByPname(String pname) {
+		public int getPidByPname(String pname) {
 			
 			PictureDAOImpl pictureDAOImpl = new PictureDAOImpl();
 			

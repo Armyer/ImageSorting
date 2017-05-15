@@ -139,4 +139,20 @@ public class BaseDaoImpl<T> implements Dao<T> {
 			JDBCUtils.release(connection);
 		}
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public <V> List<V> getListSingleVal(String sql, Object... args) {
+		Connection connection = null;
+		try {
+			connection = JDBCUtils.getConnection();
+			return (List<V>) queryRunner.query(connection, sql, new ScalarHandler(),
+					args);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtils.release(connection);
+		}
+		return null;
+	}
 }

@@ -2,22 +2,28 @@ package com.geowind.is.domain;
 
 /**
  * 图片类
- * @author jiang 
- * Date: 2017-5-01
+ * 
+ * @author jiang Date: 2017-5-01
  *
  */
 public class Picture {
 
-	//图片id
-	public String pid;
+	@Override
+	public String toString() {
+		return "Picture [pid=" + pid + ", pname=" + pname + ", location="
+				+ location + ", valid=" + valid + ", status=" + status + "]";
+	}
 
-	//图片名字
+	// 图片id
+	public int pid;
+
+	// 图片名字
 	public String pname;
 
-	//图片位置
+	// 图片位置
 	public String location;
 
-	//是否有效
+	// 是否有效
 	public int valid;
 	
 	public String date;
@@ -30,14 +36,14 @@ public class Picture {
 		this.date = date;
 	}
 
-	//备用
+	// 备用
 	public String status;
 
-	public String getPid() {
+	public Integer getPid() {
 		return pid;
 	}
 
-	public void setPid(String pid) {
+	public void setPid(Integer pid) {
 		this.pid = pid;
 	}
 

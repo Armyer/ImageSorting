@@ -20,14 +20,35 @@ public class VolunteerServlet extends BasicServlet {
 	 */
 	private static final long serialVersionUID = -1482447605034620586L;
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		doPost(request,response);
-	
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		doPost(request, response);
+
 	}
 
 	@Override
+
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		String name = request.getParameter("username");
+		String password = request.getParameter("password");
+		System.out.println("”√ªß√˚£∫" + name + " √‹¬Î£∫" + password);
+		PrintWriter out = response.getWriter();
+		response.setContentType("application/json");
+		out.println("1");
+		out.flush();
+		out.close();
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		request.setCharacterEncoding("utf-8");
@@ -43,7 +64,7 @@ public class VolunteerServlet extends BasicServlet {
 		}
 		    
 		   
-	
+
 	}
 
 	private void login(HttpServletRequest request, HttpServletResponse response) {

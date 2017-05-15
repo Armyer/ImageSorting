@@ -1,6 +1,5 @@
 package com.geowind.is.filter;
 
-import java.awt.image.RescaleOp;
 import java.io.IOException;
 
 import javax.servlet.Filter;

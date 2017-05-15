@@ -14,9 +14,14 @@ import javax.servlet.http.HttpSession;
 
 import org.omg.CORBA.UserException;
 
+import com.geowind.is.dao.PictureDAO;
+import com.geowind.is.dao.daoIml.PictureDAOImpl;
+import com.geowind.is.domain.AdaptorLabel;
 import com.geowind.is.domain.Admin;
+import com.geowind.is.domain.Picture;
 import com.geowind.is.domain.Volunteer;
 import com.geowind.is.exception.VolunteerException;
+import com.geowind.is.service.AdaptorLabelService;
 import com.geowind.is.service.AdminService;
 import com.geowind.is.service.serviceIml.VolunteerService;
 
@@ -27,6 +32,8 @@ public class AdminServlet extends HttpServlet {
 
 	private AdminService adminService = new AdminService();
 	private VolunteerService volunteerService = new VolunteerService();
+	private AdaptorLabelService adaptorLabelService = new AdaptorLabelService();
+	private PictureDAO pictureDAO = new PictureDAOImpl();
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -47,6 +54,41 @@ public class AdminServlet extends HttpServlet {
 		}
 	}
 
+	// 根据输入的标签名显示图片
+	public void index(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// 建立picture的list的集合
+		List<Picture> pictures = new ArrayList<Picture>();
+		// 获取客户端的请求index
+		String index = request.getParameter("pictureName");
+		// 获取AdaptorLabel的集合
+		if (!index.equals("") && index != null) {
+			List<AdaptorLabel> paths = adaptorLabelService
+					.getPictureLoaction(index);
+			for (AdaptorLabel adaptorLabel : paths) {
+				String pid = adaptorLabel.getPid();
+				int id = Integer.parseInt(pid);
+				Picture picture = pictureDAO.getPicture(id);
+				pictures.add(picture);
+			}
+
+			if (pictures != null) {
+				for (Picture p : pictures) {
+					System.out.println(p);
+					// 将图片的位置保存的request中
+					request.setAttribute("pictures", pictures);
+				}
+				// 进行转发
+				request.getRequestDispatcher("/pictureIndex.jsp").forward(
+						request, response);
+				/* System.out.println("----"); */
+			}
+		} else {
+			response.sendRedirect(request.getContextPath() + "/error.jsp");
+		}
+
+	}
+
 	// 删除用户
 	public void deleteUser(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -60,7 +102,7 @@ public class AdminServlet extends HttpServlet {
 			adminService.delete(id);
 		} catch (Exception e) {
 		}
-		response.getWriter().write("修改成功,2秒后将跳转到登录界面请重新登录...");
+		response.getWriter().write("删除成功。。。");
 		response.setHeader("Refresh", "2;url=" + request.getContextPath()
 				+ "/welcome.jsp");
 		// request.getRequestDispatcher("/user.jsp").forward(request, response);
@@ -68,27 +110,28 @@ public class AdminServlet extends HttpServlet {
 
 	// 修改用户的密码
 	public void updatePwd(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+			HttpServletResponse response) throws ServletException, IOException,
+			UserException, VolunteerException {
 
 		// 处理乱码
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
+
 		String newPass = request.getParameter("password");
 		String oldPass = request.getParameter("input2");
 		String id = request.getParameter("id");
-		try {
+		if (!newPass.equals("") && newPass != null && !oldPass.equals("")
+				&& oldPass != null && !id.equals("") && id != null) {
 			volunteerService.updatePassword(id, newPass, oldPass);
-		} catch (UserException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (VolunteerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			response.sendRedirect(request.getContextPath() + "/user.jsp");
+			/*
+			 * request.getRequestDispatcher("/user.jsp") .forward(request,
+			 * response);
+			 */
+			return;
 		}
-		response.getWriter().write("修改成功,2秒后将跳转到登录界面请重新登录...");
-		response.setHeader("Refresh", "2;url=" + request.getContextPath()
-				+ "/welcome.jsp");
-		// response.sendRedirect(request.getContextPath() + "/user.jsp");
+
+		response.sendRedirect(request.getContextPath() + "/error.jsp");
 	}
 
 	// 更新管理员的信息
@@ -115,7 +158,6 @@ public class AdminServlet extends HttpServlet {
 		List<Volunteer> volunteers = volunteerService.showNewuser();
 		if (volunteers != null) {
 			for (Volunteer volunteer : volunteers) {
-				System.out.println(volunteer);
 				request.setAttribute("volunteers", volunteers);
 				request.getRequestDispatcher("/welcome.jsp").forward(request,
 						response);
@@ -131,7 +173,6 @@ public class AdminServlet extends HttpServlet {
 		List<Admin> admins = adminService.getAdmins();
 		if (admins != null) {
 			for (Admin admin : admins) {
-				System.out.println(admin);
 				request.setAttribute("admins", admins);
 				// 转发
 				request.getRequestDispatcher("/adminInfo.jsp").forward(request,
@@ -150,7 +191,6 @@ public class AdminServlet extends HttpServlet {
 		// 遍历并判断
 		if (volunteers != null) {
 			for (Volunteer volunteer : volunteers) {
-				System.out.println(volunteer);
 				request.setAttribute("volunteers", volunteers);
 				request.getRequestDispatcher("/user.jsp").forward(request,
 						response);

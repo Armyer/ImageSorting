@@ -15,7 +15,15 @@ import com.geowind.is.service.serviceIml.NoAdaptorLabelServiceImpl;
 import com.geowind.is.service.serviceIml.PictureServiceImpl;
 import com.geowind.is.service.serviceIml.VolunteerService;
 
+<<<<<<< HEAD
 public class NoAdaptorLabelServlet  extends BasicServlet{
+=======
+public class NoAdaptorLabelServlet  extends HttpServlet{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+>>>>>>> 91a95ac14e16c6ae0f5d8489cf3f59bdc9639c52
 
 
 

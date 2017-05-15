@@ -35,6 +35,19 @@ public interface PictureDAO {
 	 */
 	public String getImageNum();
 	
-	public String queryPidByPname(String pname);
+
+	/**
+	 * 根据名字获取ID
+	 * @param pname
+	 * @return
+	 */
+	public int queryPidByPname(String pname);
+
+	/**
+	 * 根据id来获取相应的图片
+	 * @return
+	 */
+	public Picture getPicture(int pid);
+
 
 }

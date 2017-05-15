@@ -13,12 +13,12 @@ import com.geowind.is.service.InterestService;
 import com.geowind.is.utils.Searcher;
 
 public class InterestServiceImpl implements InterestService {
-
 	/**
 	 * 根据兴趣搜图推图
 	 */
 	@Override
 	public List<ImageURL> searchImageByInterest(String vid,String indexPath) {
+
 		
 		InterestDAOImpl interestDAOImpl = new InterestDAOImpl();
 		
@@ -34,8 +34,7 @@ public class InterestServiceImpl implements InterestService {
 		if(pictureList.size()>0){
 			
 			Searcher searcher = new Searcher();
-		
-		
+
 			try {
 				
 				System.out.println("PATH:"+pictureList.get(0).getLocation()+"\\"+pictureList.get(0).getPname());
@@ -44,9 +43,10 @@ public class InterestServiceImpl implements InterestService {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		
 		}
+
 		System.out.println("fianlList:"+finalPictureList.size());
+
 		for(int i = 0;i< 12;i++){
 			
 			
@@ -55,7 +55,7 @@ public class InterestServiceImpl implements InterestService {
 			String url = "http://192.168.0.121:8080/uploads/"+getNameOfURL(finalPictureList.get(i).getLocation());
 			
 			imageURL.setImageUrl(url);
-			imageURL.setPid(finalPictureList.get(i).getPid());
+			//imageURL.setPid(finalPictureList.get(i).getPid());
 			
 			
 			

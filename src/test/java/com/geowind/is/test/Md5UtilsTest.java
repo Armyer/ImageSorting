@@ -8,7 +8,12 @@ public class Md5UtilsTest {
 
 	@Test
 	public void testMd5() {
-		System.out.println(Md5Utils.md5("123"));
+		System.out.println(Md5Utils.md5("22225555"));
+	}
+	
+	@Test
+	public void testIMd5() {
+		System.out.println(Md5Utils.md5("22225555"));
 	}
 
 }
