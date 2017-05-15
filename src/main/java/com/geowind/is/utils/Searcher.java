@@ -25,7 +25,7 @@ import net.semanticmetadata.lire.searchers.ImageSearcher;
 public class Searcher {
 	
 	
-	public List<Picture> searcherByPic(String path) throws IOException{
+	public List<Picture> searcherByPic(String path,String indexPath) throws IOException{
 		
 		 // Checking if arg[0] is there and if it is an image.
         BufferedImage img = null;
@@ -48,10 +48,10 @@ public class Searcher {
             return null;
         }
         
-        System.out.println("path  swdw is "+Paths.get("index"));
+        //System.out.println("path  swdw is "+Paths.get("index"));
         //IndexReader ir = DirectoryReader.open(FSDirectory.open(Paths.get("index")));
         
-        IndexReader ir = DirectoryReader.open(FSDirectory.open(Paths.get("index")));
+        IndexReader ir = DirectoryReader.open(FSDirectory.open(Paths.get(indexPath)));
         
         System.out.println("path is "+Paths.get("index"));
         ImageSearcher searcher = new GenericFastImageSearcher(30, (Class<? extends GlobalFeature>) CEDD.class);

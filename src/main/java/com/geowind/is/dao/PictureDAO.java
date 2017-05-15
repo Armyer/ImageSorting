@@ -34,5 +34,7 @@ public interface PictureDAO {
 	 * @return
 	 */
 	public String getImageNum();
+	
+	public String queryPidByPname(String pname);
 
 }

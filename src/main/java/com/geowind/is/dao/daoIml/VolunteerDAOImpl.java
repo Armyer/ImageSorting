@@ -112,6 +112,7 @@ public class VolunteerDAOImpl extends BaseDaoImpl<Volunteer> implements
 
 	@Override
 	public int queryIdByName(String username) {
+		//System.out.println("aaaaa:"+username);
 		String sql = "select vid from volunteer where username = ?";
 		Object[] args = {username};
 		Volunteer volunteer = query(sql, args);

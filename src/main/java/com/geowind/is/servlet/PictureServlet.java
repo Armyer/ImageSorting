@@ -1,9 +1,12 @@
 package com.geowind.is.servlet;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -16,46 +19,45 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import com.geowind.is.utils.FileUploadUtil;
 import com.geowind.is.domain.Picture;
 import com.geowind.is.service.serviceIml.PictureServiceImpl;
 
 public class PictureServlet extends BasicServlet {
 
 	private static final long serialVersionUID = -7744625344830285257L;
-	private ServletContext sc;
-	private String savePath;
-
-	public void init(ServletConfig config) {
-		// 在web.xml中设置的一个初始化参数
-		savePath = config.getInitParameter("savePath");
-		sc = config.getServletContext();
-	}
+	
+	private static long fileSizeMax = 1024*1024*5;	
+	private static long sizeMax = 1024 * 1024 *100;
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		doPost(req, resp);
+		doPost(request, response);
 
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		req.setCharacterEncoding("utf-8");
-		resp.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
 
-		String method = req.getParameter("method");
+		String method = request.getParameter("method");
 
 		switch (method) {
 
 		case "uploadImage":
-			uploadImage(req, resp);
+			uploadImage(request, response);
 			break;
 		case "getImageOfRadmon":
-			getImageOfRadmon(req,resp);
+			getImageOfRadmon(request,response);
 			break;
 		case "pushImagesByImage":
-			pushImagesByImage(req,resp);
+			pushImagesByImage(request,response);
+			break;
+		case "uploadImages":
+			uploadImages(request,response);
 			break;
 		default:
 			break;
@@ -65,6 +67,36 @@ public class PictureServlet extends BasicServlet {
 	}
 	
 	
+	
+	/**
+	 * 上传图片集合测试
+	 * @param req
+	 * @param resp
+	 */
+	private void uploadImages(HttpServletRequest request, HttpServletResponse response) {
+		ServletConfig servletConfig = this.getServletConfig();
+		
+		//System.out.println("aa"+servletConfig.getInitParameter("uploadPath"));
+		FileUploadUtil uploadUtil = new FileUploadUtil();
+		Map<String, String> map = null;
+		try {
+			List<Picture> pictureList =  uploadUtil.upload(servletConfig, request, response);
+//			for(int i= 0 ;i<pictureList.size();i++){
+//				System.out.println("location:"+pictureList.get(i).getLocation()+","+pictureList.get(i).getDate());
+//			}
+
+			PictureServiceImpl pictureServiceImpl = new PictureServiceImpl();
+			long result = pictureServiceImpl.upLoadPictureList(pictureList);
+			if(result == 0){
+				throw new Exception();
+			}else{
+				this.out(response, "success");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	/**
 	 * 根据兴趣以图搜图
 	 * @param req
@@ -109,16 +141,22 @@ public class PictureServlet extends BasicServlet {
 	 * @throws ServletException
 	 */
 	private void uploadImage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		ServletConfig servletConfig = this.getServletConfig();
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 		ServletFileUpload upload = new ServletFileUpload(factory);
-		List<Picture> pictureList = new ArrayList<>();
+		
+	
+		upload.setFileSizeMax(fileSizeMax);
+
+		upload.setSizeMax(sizeMax);
+		
+		//List<Picture> pictureList = new ArrayList<>();
 		try {
 			List items = upload.parseRequest(req);
 			Iterator itr = items.iterator();
 			
 			PictureServiceImpl pictureServiceImpl = new PictureServiceImpl();
-			long result = pictureServiceImpl.upLoadImages(itr,sc.getRealPath("/")+savePath);
+			long result = pictureServiceImpl.upLoadImages(itr,servletConfig.getServletContext().getRealPath("/")+servletConfig.getInitParameter("savePath"));
 			
 			if(result == 0){
 				throw new Exception();

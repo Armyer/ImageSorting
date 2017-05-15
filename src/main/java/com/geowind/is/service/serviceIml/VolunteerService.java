@@ -130,6 +130,7 @@ public class VolunteerService {
 	 * @return
 	 */
 	public int getIDByUserName(String username){
+		//System.out.println("username:"+username);
 		VolunteerDAOImpl volunteerDAOImpl = new VolunteerDAOImpl();
 		int id = volunteerDAOImpl.queryIdByName(username);
 		return id;

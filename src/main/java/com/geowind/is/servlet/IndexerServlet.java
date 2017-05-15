@@ -22,16 +22,7 @@ public class IndexerServlet extends BasicServlet{
 	 * 
 	 */
 	private static final long serialVersionUID = -4013271911255672606L;
-	private ServletContext sc;
-	private String savePath;
-	private String indexerPath;
-
-	public void init(ServletConfig config) {
-		// 在web.xml中设置的一个初始化参数
-		savePath = config.getInitParameter("savePath");
-		sc = config.getServletContext();
-		indexerPath=config.getInitParameter("indexerPath");
-	}
+	
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -61,14 +52,11 @@ public class IndexerServlet extends BasicServlet{
 	
 	//制作图库数据
 	private void makeIndex(HttpServletRequest request, HttpServletResponse response) {
+		ServletConfig servletConfig = this.getServletConfig();
 		Indexer indexer = new Indexer();
-		
-		
-		
+		//System.out.println(servletConfig.getServletContext().getRealPath("/")+servletConfig.getInitParameter("savePath"));
 		try {
-			//System.out.println("sc path is :"+sc.getRealPath("/"));
-			int result = indexer.makeIndex(sc.getRealPath("/")+savePath,sc.getRealPath("/")+indexerPath);
-			//System.out.println("sc path is :"+sc.getRealPath("/")+savePath);
+			int result = indexer.makeIndex(servletConfig.getServletContext().getRealPath("/")+servletConfig.getInitParameter("savePath"),servletConfig.getServletContext().getRealPath("/")+this.getInitParameter("indexPath"));
 			if(result == 1){
 				PrintWriter out = response.getWriter();
 				String msg = "success make index";

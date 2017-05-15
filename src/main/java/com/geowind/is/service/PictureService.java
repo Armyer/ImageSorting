@@ -20,7 +20,12 @@ public interface PictureService {
 	 */
 	public long upLoadPictureList(List<Picture> pictureList);
 
+	
 	public long upLoadImages(Iterator<Picture> i,String path);
 	
+	//Ëæ»úÍÆÍ¼
+	public List<Picture> pushImagesOfRandom();
 	
+	
+	public String getPidByPname(String pname);
 }

@@ -212,5 +212,13 @@ public class PictureServiceImpl implements PictureService {
 		      return file.getPath(); 
 		      
 		    }
+
+		@Override
+		public String getPidByPname(String pname) {
+			
+			PictureDAOImpl pictureDAOImpl = new PictureDAOImpl();
+			
+			return pictureDAOImpl.queryPidByPname(pname);
+		}
 	
 }

@@ -12,6 +12,6 @@ public interface InterestService {
 	 * @param vid
 	 * @return
 	 */
-	public List<ImageURL> searchImageByInterest(String vid);
+	public List<ImageURL> searchImageByInterest(String vid,String indexerPath);
 	
 }

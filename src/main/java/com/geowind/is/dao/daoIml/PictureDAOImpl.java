@@ -31,11 +31,11 @@ public class PictureDAOImpl extends BaseDaoImpl<Picture> implements PictureDAO {
 					picture.getValid(),picture.getStatus(),picture.getDate()};
 			
 			
-			//System.out.println(" "+picture.getPid()+" ,"+picture.getPname());
+			System.out.println("FUCK: "+picture.getPname()+" "+picture.getLocation()+" "+
+						picture.getValid()+" "+picture.getStatus()+" "+picture.getDate());
 			
 			result = insert(sql,params);
 			
-			//System.out.println("insert picture result is :"+result);
 		}
 		return result;
 	}
@@ -53,6 +53,17 @@ public class PictureDAOImpl extends BaseDaoImpl<Picture> implements PictureDAO {
 	public String getImageNum() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String queryPidByPname(String pname) {
+
+		String sql = "select pid from picture where pname=?";
+		Object[] args = {pname};
+		
+		Picture picture = query(sql, args);
+		
+		return picture.getPid();
 	}
 
 

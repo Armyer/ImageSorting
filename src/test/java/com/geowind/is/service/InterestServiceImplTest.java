@@ -16,8 +16,10 @@ public class InterestServiceImplTest {
 		InterestServiceImpl interestServiceImpl = new InterestServiceImpl();
 
 		String vid = "1";
+		
+		String indexerPath = "E:\\env\\apache-tomcat-9.0.0.M19\\webapps\\index";
 
-		List<ImageURL> finalPicture = interestServiceImpl.searchImageByInterest(vid);
+		List<ImageURL> finalPicture = interestServiceImpl.searchImageByInterest(vid,indexerPath);
 		
 		
 		for (int i = 0; i < finalPicture.size(); i++) {

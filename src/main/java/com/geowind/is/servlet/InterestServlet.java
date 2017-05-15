@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.geowind.is.domain.ImageURL;
 import com.geowind.is.domain.Picture;
 import com.geowind.is.service.serviceIml.InterestServiceImpl;
+import com.geowind.is.service.serviceIml.VolunteerService;
 import com.google.gson.Gson;
 
 public class InterestServlet extends BasicServlet{
@@ -19,6 +22,7 @@ public class InterestServlet extends BasicServlet{
 	 * 
 	 */
 	private static final long serialVersionUID = 1858653679130436118L;
+	
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -39,6 +43,9 @@ public class InterestServlet extends BasicServlet{
 		
 		case "pushImageByInterest":
 			pushImageByInterest(request,response);
+			break;
+		default:
+			break;
 		}
 		
 		
@@ -47,31 +54,39 @@ public class InterestServlet extends BasicServlet{
 	}
 
 	private void pushImageByInterest(HttpServletRequest request, HttpServletResponse response) {
-		// TO//获得志愿者ID号
+		ServletConfig servletConfig = this.getServletConfig();
+		
+		//有待测试
+//		String username = request.getParameter("username");
+//		
+//		VolunteerService volunteerService = new VolunteerService();
+//		int volunteerId = volunteerService.getIDByUserName(username);
+//		String result = String.valueOf(volunteerId);
+		
+		
+		//获得志愿者ID号
 		String volunteerId = request.getParameter("username");
 		
-		//System.out.println("volunteerId is :"+volunteerId);
 		
 		InterestServiceImpl interestServiceImpl = new InterestServiceImpl();
 		
-		List<ImageURL>  imageURLList = interestServiceImpl.searchImageByInterest(volunteerId);
+		List<ImageURL>  imageURLList = interestServiceImpl.searchImageByInterest(volunteerId,servletConfig.getServletContext().getRealPath("/")+servletConfig.getInitParameter("indexPath"));
 		
-		//System.out.println(imageURLList.get(0).getPid());
 		
+		PrintWriter out;
 		try {
-			this.out(response, imageURLList);
+			out = response.getWriter();
+			Gson gson = new Gson();
+			String msg = gson.toJson(imageURLList);
+
+			out.print(msg);
+			out.flush();
+			out.close();
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-//		PrintWriter out = response.getWriter();
-//		Gson gson = new Gson();
-//		String msg = gson.toJson(imageURLList);
-//
-//		out.print(msg);
-//		out.flush();
-//		out.close();
 		
 	}
 	

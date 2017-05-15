@@ -27,7 +27,7 @@ public class Indexer {
 	
 	
 	public int makeIndex(String path,String savePath) throws IOException{
-		System.out.println("savaPath:"+savePath);
+		//System.out.println("savaPath:"+savePath);
 		 // Checking if path is there and if it is a directory.
         boolean passed = false;
         if (path.length() > 0) {

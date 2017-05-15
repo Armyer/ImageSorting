@@ -5,7 +5,7 @@
 	version="3.1">
 	<display-name>ImageSorting</display-name>
 	<welcome-file-list>
-		<welcome-file>uploadImage.jsp</welcome-file>
+		<welcome-file>uploadImageTest.jsp</welcome-file>
 	</welcome-file-list>
 	<context-param>
 		<param-name>encoding</param-name>
@@ -22,16 +22,16 @@
 	</filter-mapping>
 
 	<servlet>
-		<description>This is the description of my J2EE component</description>
-		<display-name>This is the display name of my J2EE component</display-name>
 		<servlet-name>PictureServlet</servlet-name>
 		<servlet-class>com.geowind.is.servlet.PictureServlet</servlet-class>
 
 		<!-- 设置初始化参数 -->
 		<init-param>
-			<param-name>savePath</param-name>
+			<param-name>uploadPath</param-name>
 			<param-value>../uploads</param-value>
 		</init-param>
+		<load-on-startup>0</load-on-startup>
+
 	</servlet>
 
 	<servlet-mapping>
@@ -49,31 +49,33 @@
 		<servlet-name>VolunteerServlet</servlet-name>
 		<url-pattern>/volunteerServlet</url-pattern>
 	</servlet-mapping>
-	
-	
+
+
 	<servlet>
 		<servlet-name>InterestServlet</servlet-name>
 		<servlet-class>com.geowind.is.servlet.InterestServlet</servlet-class>
+		<init-param>
+			<param-name>indexPath</param-name>
+			<param-value>../index</param-value>
+		</init-param> 
 	</servlet>
-	
-	
+
+
 	<servlet-mapping>
 		<servlet-name>InterestServlet</servlet-name>
-		<url-pattern>/interestServlet</url-pattern>	
+		<url-pattern>/interestServlet</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
 		<servlet-name>IndexerServlet</servlet-name>
 		<servlet-class>com.geowind.is.servlet.IndexerServlet</servlet-class>
-		
-		<!-- 设置初始化参数 -->
 		<init-param>
 			<param-name>savePath</param-name>
 			<param-value>../uploads</param-value>
 		</init-param>
-		
+
 		<init-param>
-			<param-name>indexerPath</param-name>
+			<param-name>indexPath</param-name>
 			<param-value>../index</param-value>
 		</init-param>
 	</servlet>
@@ -81,16 +83,31 @@
 	<servlet-mapping>
 		<servlet-name>IndexerServlet</servlet-name>
 		<url-pattern>/indexerServlet</url-pattern>
-	</servlet-mapping>	
-	
+	</servlet-mapping>
+
 	<servlet>
 		<servlet-name>NoAdaptorLabelServlet</servlet-name>
 		<servlet-class>com.geowind.is.servlet.NoAdaptorLabelServlet</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>NoAdaptorLabelServlet</servlet-name>
 		<url-pattern>/noAdaptorLabelServlet</url-pattern>
 	</servlet-mapping>
-	
+
+	<servlet>
+		<servlet-name>InitServlet</servlet-name>
+		<servlet-class>com.geowind.is.servlet.InitServlet</servlet-class>
+
+		<init-param>
+			<param-name>uploadPath</param-name>
+			<param-value>../uploads</param-value>
+		</init-param>
+		
+		
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+
+
+
 </web-app>

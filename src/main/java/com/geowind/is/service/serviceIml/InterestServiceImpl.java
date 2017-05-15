@@ -18,12 +18,13 @@ public class InterestServiceImpl implements InterestService {
 	 * 根据兴趣搜图推图
 	 */
 	@Override
-	public List<ImageURL> searchImageByInterest(String vid) {
+	public List<ImageURL> searchImageByInterest(String vid,String indexPath) {
 		
 		InterestDAOImpl interestDAOImpl = new InterestDAOImpl();
 		
 		//查询志愿者在已确定的标签表里所包含的图片
 		List<Picture> pictureList = interestDAOImpl.queryImageByInterest(vid);
+		
 		
 		//以图搜图后获得的图片
 		List<Picture> finalPictureList = new ArrayList<>();
@@ -37,24 +38,26 @@ public class InterestServiceImpl implements InterestService {
 		
 			try {
 				
-				//System.out.println("PATH:"+pictureList.get(0).getLocation()+"\\"+pictureList.get(0).getPname());
-				 finalPictureList = searcher.searcherByPic(pictureList.get(0).getLocation()+"\\"+pictureList.get(0).getPname());
+				System.out.println("PATH:"+pictureList.get(0).getLocation()+"\\"+pictureList.get(0).getPname());
+				 finalPictureList = searcher.searcherByPic(pictureList.get(0).getLocation()+"\\"+pictureList.get(0).getPname(),indexPath);
 				 
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		
 		}
-		
+		System.out.println("fianlList:"+finalPictureList.size());
 		for(int i = 0;i< 12;i++){
 			
 			
 			ImageURL imageURL = new ImageURL();
 			
-			String url = "http://192.168.0.120:8080/uploads/"+getNameOfURL(finalPictureList.get(i).getLocation());
+			String url = "http://192.168.0.121:8080/uploads/"+getNameOfURL(finalPictureList.get(i).getLocation());
 			
 			imageURL.setImageUrl(url);
 			imageURL.setPid(finalPictureList.get(i).getPid());
+			
+			
 			
 			imageUrlList.add(imageURL);
 			
