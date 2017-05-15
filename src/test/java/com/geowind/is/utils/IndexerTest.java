@@ -30,11 +30,13 @@ public class IndexerTest {
 		
 		Indexer index = new Indexer();
 		
-		String path = "E:\\env\\test-pic\\atm";
+		String path = "E:\\env\\apache-tomcat-9.0.0.M19\\webapps\\uploads";
 		
-		int result = index.makeIndex(path);
+		String path2 = "E:\\env\\apache-tomcat-9.0.0.M19\\webapps\\index";
 		
-		if(result == 0){
+		int result = index.makeIndex(path,path2);
+		
+		if(result != 0){
 			System.out.println("success");
 		}else{
 			System.out.println("failure");

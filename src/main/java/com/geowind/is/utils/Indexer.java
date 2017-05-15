@@ -26,7 +26,8 @@ import net.semanticmetadata.lire.utils.FileUtils;
 public class Indexer {
 	
 	
-	public int makeIndex(String path) throws IOException{
+	public int makeIndex(String path,String savePath) throws IOException{
+		System.out.println("savaPath:"+savePath);
 		 // Checking if path is there and if it is a directory.
         boolean passed = false;
         if (path.length() > 0) {
@@ -60,7 +61,11 @@ public class Indexer {
 
         // Creating an Lucene IndexWriter
         IndexWriterConfig conf = new IndexWriterConfig(new WhitespaceAnalyzer());
-        IndexWriter iw = new IndexWriter(FSDirectory.open(Paths.get("index")), conf);
+        
+        //String savePath = "";
+        
+        IndexWriter iw = new IndexWriter(FSDirectory.open(Paths.get(savePath)), conf);
+        
         // Iterating through images building the low level features
         for (Iterator<String> it = images.iterator(); it.hasNext(); ) {
             String imageFilePath = it.next();

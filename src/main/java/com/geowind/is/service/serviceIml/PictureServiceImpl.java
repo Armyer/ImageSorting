@@ -2,6 +2,7 @@ package com.geowind.is.service.serviceIml;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -81,6 +82,7 @@ public class PictureServiceImpl implements PictureService {
 	public long upLoadImages(Iterator<Picture> itr, String realpath) {
 		long result = 0;
 		List<Picture> pictureList = new ArrayList<>();
+
 		try {
 			while (itr.hasNext()) {
 
@@ -121,6 +123,48 @@ public class PictureServiceImpl implements PictureService {
 						picture.setValid(1);
 						pictureList.add(picture);
 					}
+		try{
+		while (itr.hasNext()) {
+			
+			FileItem item = (FileItem) itr.next();
+			if (item.isFormField()) {
+				System.out.println("表单参数名:" + item.getFieldName() + "，表单参数值:" + item.getString("UTF-8"));
+			}else {
+				if (item.getName() != null && !item.getName().equals("")) {
+					
+					//时间戳
+					String timeName = toHex(new Date().getTime());
+					
+					item.setFieldName(timeName);
+					
+//					System.out.println("上传文件的大小:" + item.getSize());
+//					System.out.println("上传文件的类型:" + item.getContentType());
+//					System.out.println("上传文件的名称:" + item.getName());
+//					System.out.println("上传文件的名称1:" + item.getFieldName());
+					
+					File tempFile = new File(item.getFieldName()+getRandomNum()+getSuffixOfImage(item.getName()));
+								
+					String path = checkExist(realpath);	
+					//上传文件的保存路径
+					File file = new File(path, tempFile.getName());
+					item.write(file);
+				
+					/*
+					 * 插入数据库图片数据
+					 */
+					Picture picture = new Picture();
+					picture.setPname(tempFile.getName());
+					picture.setLocation(path);
+					//设置时间
+					Date date = new Date();	
+					SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");		
+					picture.setDate(simpleDateFormat.format(date));
+					picture.setValid(1);
+					
+					pictureList.add(picture);
+					
+					
+
 				}
 			}
 

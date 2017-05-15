@@ -23,6 +23,7 @@ public class PictureDAOImpl extends BaseDaoImpl<Picture> implements PictureDAO {
 
 			Picture picture = pictureList.get(i);
 
+
 			String sql = "insert into picture(pid,pname,location,valid,status) values (?,?,?,?,?)";
 
 			Object[] params = { picture.getPid(), picture.getPname(),
@@ -34,6 +35,20 @@ public class PictureDAOImpl extends BaseDaoImpl<Picture> implements PictureDAO {
 			result = insert(sql, params);
 
 			// System.out.println("insert picture result is :"+result);
+
+			
+			String sql = "insert into picture(pname,location,valid,status,uploaddate) values (?,?,?,?,?)";
+			
+			Object[] params ={picture.getPname(),picture.getLocation(),
+					picture.getValid(),picture.getStatus(),picture.getDate()};
+			
+			
+			//System.out.println(" "+picture.getPid()+" ,"+picture.getPname());
+			
+			result = insert(sql,params);
+			
+			//System.out.println("insert picture result is :"+result);
+
 		}
 		return result;
 	}

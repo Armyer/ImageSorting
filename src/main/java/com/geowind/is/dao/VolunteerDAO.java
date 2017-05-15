@@ -85,4 +85,8 @@ public interface VolunteerDAO {
 	public int time();
 	
 	public void mergePwd(String username,String password);
+	
+	
+	//通过名字获取ID
+	public int queryIdByName(String username);
 }

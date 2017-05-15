@@ -21,6 +21,8 @@ public class SearcherTest {
 		
 		List<Picture> pictureList = searcher.searcherByPic(path);
 				
+		System.out.println("length is£º"+pictureList.size());
+		
 		for(int i = 0;i<pictureList.size();i++){
 			
 			System.out.println("location "+pictureList.get(i).getLocation()+", score: "+pictureList.get(i).getStatus());

@@ -2,6 +2,7 @@ package com.geowind.is.service;
 
 import java.util.List;
 
+import com.geowind.is.domain.ImageURL;
 import com.geowind.is.domain.Picture;
 
 public interface InterestService {
@@ -11,6 +12,6 @@ public interface InterestService {
 	 * @param vid
 	 * @return
 	 */
-	public List<Picture> searchImageByInterest(String vid);
+	public List<ImageURL> searchImageByInterest(String vid);
 	
 }

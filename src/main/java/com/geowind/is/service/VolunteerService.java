@@ -92,4 +92,15 @@ public class VolunteerService {
 		}
 
 	}
+	
+	/**
+	 * 通过用户名获取ID
+	 * @param username
+	 * @return
+	 */
+	public int getIDByUserName(String username){
+		VolunteerDAOImpl volunteerDAOImpl = new VolunteerDAOImpl();
+		int id = volunteerDAOImpl.queryIdByName(username);
+		return id;
+	}
 }
