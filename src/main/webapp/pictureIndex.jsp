@@ -65,6 +65,7 @@
 			<li><a href="taskAllocation.jsp">任务分配系统</a></li>
 			<li><a href="labelDecision.jsp">标签判定系统</a></li>
 			<li><a href="pictureIndex.jsp">图片存储索引系统</a></li>
+			<li><a href="#" class="gallery">导出标签结果</a></li>
 			<li><a class="more"
 				href="${pageContext.request.contextPath }/adminServlet?method=user">查看更多用户</a></li>
 			<li><a
@@ -78,8 +79,14 @@
 	<div class="centercontent">
 		<div id="contentwrapper" class="contentwrapper">
 			<div class="two_third dashboard_left">
+				<ul class="shortcuts">
+					<li><a
+						href="${pageContext.request.contextPath }/adminServlet?method=user"
+						class="users"><span>用户设置</span></a></li>
+					<li><a href="pictureIndex.jsp" class="gallery"><span>上传图片</span></a></li>
+					<li><a href="" class="analytics"><span>统计信息</span></a></li>
+				</ul>
 				<br clear="all" />
-
 				<div class="contenttitle2 nomargintop">
 					<h3>图片检索</h3>
 				</div>
@@ -99,40 +106,6 @@
 		<div class="imgtag">
 			<div class="tag1">
 				<div class="imgview">
-					<div class="imgview-bgtext">ImageView</div>
-					<div class="imgview-rep">ImageView</div>
-					<ul>
-						<c:forEach items="${requestScope.pictures }" var="picture">
-							<li title="photo2"><a href="#"><span><img
-										src="${picture.location}" /></span></a></li>
-						</c:forEach>
-					</ul>
-				</div>
-				<br clear="all" /> <br clear="all" />
-			</div>
-		</div>
-
-		<div class="imgtag">
-			<div class="tag2">
-				<div class="imgview">
-					<div class="imgview-bgtext">PhotoView</div>
-					<div class="imgview-rep">PhotoView</div>
-					<ul>
-						<c:forEach items="${requestScope.pictures }" var="picture">
-							<li title="photo2"><a href="#"><span><img
-										src="${picture.location}" /></span></a></li>
-						</c:forEach>
-					</ul>
-				</div>
-				<br clear="all" /> <br clear="all" />
-			</div>
-		</div>
-
-		<div class="imgtag">
-			<div class="tag3">
-				<div class="imgview">
-					<div class="imgview-bgtext">PhotoView</div>
-					<div class="imgview-rep">PhotoView</div>
 					<ul>
 						<c:forEach items="${requestScope.pictures }" var="picture">
 							<li title="photo2"><a href="#"><span><img

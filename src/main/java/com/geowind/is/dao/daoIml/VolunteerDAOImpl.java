@@ -35,7 +35,7 @@ public class VolunteerDAOImpl extends BaseDaoImpl<Volunteer> implements
 	public boolean findByUidAndPassword(String uid, String password)
 			throws SQLException {
 		Boolean flag = false;
-		String sql = "select count(*) from volunteer where vid=? and password=?";
+		String sql = "select * from volunteer where vid=? and password=?";
 		Volunteer volunteer = query(sql, uid, password);
 		if (volunteer != null) {
 			flag = true;

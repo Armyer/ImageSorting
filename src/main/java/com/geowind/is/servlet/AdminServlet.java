@@ -101,7 +101,7 @@ public class AdminServlet extends HttpServlet {
 			adminService.delete(id);
 		} catch (Exception e) {
 		}
-		response.getWriter().write("修改成功,2秒后将跳转到登录界面请重新登录...");
+		response.getWriter().write("删除成功。。。");
 		response.setHeader("Refresh", "2;url=" + request.getContextPath()
 				+ "/welcome.jsp");
 		// request.getRequestDispatcher("/user.jsp").forward(request, response);
@@ -109,27 +109,28 @@ public class AdminServlet extends HttpServlet {
 
 	// 修改用户的密码
 	public void updatePwd(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+			HttpServletResponse response) throws ServletException, IOException,
+			UserException, VolunteerException {
 
 		// 处理乱码
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
+
 		String newPass = request.getParameter("password");
 		String oldPass = request.getParameter("input2");
 		String id = request.getParameter("id");
-		try {
+		if (!newPass.equals("") && newPass != null && !oldPass.equals("")
+				&& oldPass != null && !id.equals("") && id != null) {
 			volunteerService.updatePassword(id, newPass, oldPass);
-		} catch (UserException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (VolunteerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			response.sendRedirect(request.getContextPath() + "/user.jsp");
+			/*
+			 * request.getRequestDispatcher("/user.jsp") .forward(request,
+			 * response);
+			 */
+			return;
 		}
-		response.getWriter().write("修改成功,2秒后将跳转到登录界面请重新登录...");
-		response.setHeader("Refresh", "2;url=" + request.getContextPath()
-				+ "/welcome.jsp");
-		// response.sendRedirect(request.getContextPath() + "/user.jsp");
+
+		response.sendRedirect(request.getContextPath() + "/error.jsp");
 	}
 
 	// 更新管理员的信息

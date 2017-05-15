@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>管理的页面</title>
 <link rel="stylesheet" href="css/style.default.css" type="text/css" />
 <script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
@@ -64,6 +64,7 @@
 			<li><a href="taskAllocation.jsp">任务分配系统</a></li>
 			<li><a href="labelDecision.jsp">标签判定系统</a></li>
 			<li><a href="pictureIndex.jsp">图片存储索引系统</a></li>
+			<li><a href="#" class="gallery">导出标签结果</a></li>
 			<li><a class="more"
 				href="${pageContext.request.contextPath }/adminServlet?method=user">查看更多用户</a></li>
 			<li><a
@@ -85,7 +86,7 @@
 						<li><a
 							href="${pageContext.request.contextPath }/adminServlet?method=user"
 							class="users"><span>用户设置</span></a></li>
-						<li><a href="pictureIndex.jsp" class="gallery"><span>图册信息</span></a></li>
+						<li><a href="pictureIndex.jsp" class="gallery"><span>上传图片</span></a></li>
 						<li><a href="" class="analytics"><span>统计信息</span></a></li>
 					</ul>
 
