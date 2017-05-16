@@ -24,7 +24,7 @@ public class AdaptorLabel {
 	private String label;
 	
 	//确认标签日期
-	private Date confirmDate;
+	private String confirmDate;
 	
 	//是否有效
 	private int valid;
@@ -70,11 +70,11 @@ public class AdaptorLabel {
 		this.label = label;
 	}
 
-	public Date getConfirmDate() {
+	public String getConfirmDate() {
 		return confirmDate;
 	}
 
-	public void setConfirmDate(Date confirmDate) {
+	public void setConfirmDate(String confirmDate) {
 		this.confirmDate = confirmDate;
 	}
 

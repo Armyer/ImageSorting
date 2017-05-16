@@ -3,7 +3,7 @@ img{border:0;}
 .imgview{
 position:absolute;
 top:30px;
-z-index:80;
+z-index:10000;
 float:left;
 width:857px;
 height:auto;

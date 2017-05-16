@@ -1,4 +1,4 @@
-package com.geowind.is.service.serviceIml;
+package com.geowind.is.service;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
@@ -17,14 +17,13 @@ import org.apache.commons.fileupload.FileItem;
 
 import com.geowind.is.dao.daoIml.PictureDAOImpl;
 import com.geowind.is.domain.Picture;
-import com.geowind.is.service.PictureService;
 
 /**
  * 
  * @author jiang Date:2017-5-02
  *
  */
-public class PictureServiceImpl implements PictureService {
+public class PictureServiceImpl  {
 
 	private ServletContext sc;
 	private String savePath;
@@ -204,7 +203,6 @@ public class PictureServiceImpl implements PictureService {
 
 	}
 
-	@Override
 	public int getPidByPname(String pname) {
 
 		PictureDAOImpl pictureDAOImpl = new PictureDAOImpl();

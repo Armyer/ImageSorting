@@ -10,7 +10,7 @@ public class AdaptorLabelDAOImpl extends BaseDaoImpl<AdaptorLabel> implements Ad
 	@Override
 	public long insertLabelOfImage(AdaptorLabel adaptorLabel) {
 		
-		String sql = "insert into adaptorlabel(alid,confrimdate,label,pid,vid,valid) values(?,?,?,?,?,?)";
+		String sql = "insert into adaptorlabel(alid,confirmdate,label,pid,vid,valid) values(?,?,?,?,?,?)";
 		
 		Object[] args = {adaptorLabel.getAlid(),adaptorLabel.getConfirmDate(),adaptorLabel.getLabel(),
 						adaptorLabel.getPid(),adaptorLabel.getVid(),adaptorLabel.getValid()};

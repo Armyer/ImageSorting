@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.geowind.is.domain.Volunteer;
-import com.geowind.is.service.serviceIml.VolunteerService;
+import com.geowind.is.service.VolunteerService;
 
 public class VolunteerServlet extends BasicServlet {
 

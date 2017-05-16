@@ -11,9 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.geowind.is.domain.NoAdaptorLabel;
-import com.geowind.is.service.serviceIml.NoAdaptorLabelServiceImpl;
-import com.geowind.is.service.serviceIml.PictureServiceImpl;
-import com.geowind.is.service.serviceIml.VolunteerService;
+import com.geowind.is.service.*;
 
 
 public class NoAdaptorLabelServlet  extends BasicServlet{
@@ -114,6 +112,8 @@ public class NoAdaptorLabelServlet  extends BasicServlet{
 				this.out(response,"1");
 			} catch (IOException e) {
 				e.printStackTrace();
+			}finally{
+				countLabel(label, pid, vid);
 			}
 		}else{
 			try {
@@ -124,6 +124,20 @@ public class NoAdaptorLabelServlet  extends BasicServlet{
 		}
 		
 		
+		
+	}
+
+
+
+	private void countLabel(String label, int pid,int vid) {
+
+		NoAdaptorLabelServiceImpl noAdaptorLabelServiceImpl = new NoAdaptorLabelServiceImpl();
+		int result = noAdaptorLabelServiceImpl.getNumOfSameLabel(label, pid, vid);
+		if(result == 1){
+			//成功收录
+		}else{
+			//未收敛
+		}
 		
 	}
 	

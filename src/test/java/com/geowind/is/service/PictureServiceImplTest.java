@@ -5,7 +5,7 @@ import java.util.List;
 import org.junit.Test;
 
 import com.geowind.is.domain.Picture;
-import com.geowind.is.service.serviceIml.PictureServiceImpl;
+import com.geowind.is.service.*;
 
 public class PictureServiceImplTest {
 	

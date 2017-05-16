@@ -21,7 +21,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.geowind.is.utils.FileUploadUtil;
 import com.geowind.is.domain.Picture;
-import com.geowind.is.service.serviceIml.PictureServiceImpl;
+import com.geowind.is.service.*;
 
 public class PictureServlet extends BasicServlet {
 
@@ -74,6 +74,7 @@ public class PictureServlet extends BasicServlet {
 	 * @param resp
 	 */
 	private void uploadImages(HttpServletRequest request, HttpServletResponse response) {
+		response.setCharacterEncoding("utf-8");
 		ServletConfig servletConfig = this.getServletConfig();
 		
 		//System.out.println("aa"+servletConfig.getInitParameter("uploadPath"));
@@ -88,9 +89,14 @@ public class PictureServlet extends BasicServlet {
 			PictureServiceImpl pictureServiceImpl = new PictureServiceImpl();
 			long result = pictureServiceImpl.upLoadPictureList(pictureList);
 			if(result == 0){
-				throw new Exception();
+				this.out(response, "0");
+				//throw new Exception();
 			}else{
-				this.out(response, "success");
+				response.sendRedirect("pictureIndex.jsp");
+				//this.out(response, "<script>alert(\"上传成功!\");</script>");
+				//request.getRequestDispatcher("pictureIndex.jsp").forward(request, response);
+				//this.out(response, "1");
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

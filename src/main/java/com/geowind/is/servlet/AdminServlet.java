@@ -23,7 +23,7 @@ import com.geowind.is.domain.Volunteer;
 import com.geowind.is.exception.VolunteerException;
 import com.geowind.is.service.AdaptorLabelService;
 import com.geowind.is.service.AdminService;
-import com.geowind.is.service.serviceIml.VolunteerService;
+import com.geowind.is.service.*;
 
 @WebServlet("/adminServlet")
 public class AdminServlet extends HttpServlet {

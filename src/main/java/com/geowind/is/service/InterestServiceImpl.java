@@ -1,4 +1,4 @@
-package com.geowind.is.service.serviceIml;
+package com.geowind.is.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,14 +9,12 @@ import java.util.regex.Pattern;
 import com.geowind.is.dao.daoIml.InterestDAOImpl;
 import com.geowind.is.domain.ImageURL;
 import com.geowind.is.domain.Picture;
-import com.geowind.is.service.InterestService;
 import com.geowind.is.utils.Searcher;
 
-public class InterestServiceImpl implements InterestService {
+public class InterestServiceImpl  {
 	/**
 	 * 根据兴趣搜图推图
 	 */
-	@Override
 	public List<ImageURL> searchImageByInterest(String vid,String indexPath) {
 
 		
@@ -45,19 +43,17 @@ public class InterestServiceImpl implements InterestService {
 			}
 		}
 
-		System.out.println("fianlList:"+finalPictureList.size());
+		//System.out.println("fianlList:"+finalPictureList.size());
 
 		for(int i = 0;i< 12;i++){
 			
 			
 			ImageURL imageURL = new ImageURL();
 			
-			String url = "http://192.168.0.121:8080/uploads/"+getNameOfURL(finalPictureList.get(i).getLocation());
+			String url = "http://192.168.0.116:8080/uploads/"+getNameOfURL(finalPictureList.get(i).getLocation());
 			
 			imageURL.setImageUrl(url);
 			//imageURL.setPid(finalPictureList.get(i).getPid());
-			
-			
 			
 			imageUrlList.add(imageURL);
 			
@@ -77,11 +73,16 @@ public class InterestServiceImpl implements InterestService {
 	 */
 	public String getNameOfURL(String url){
 		
-
-    	
-		//String a = "\\.(jpg|jpeg|bmp|png|gif|JPG|JPEG|BMP|PNG|GIF)$";
+//		String result = url.substring(47);
 		
-		String result = url.substring(47);
+		Pattern pattern = Pattern.compile("(\\w{11}.*?(jpg|gif|png|bmp|JPG|GIF|PNG|BMP))");
+		String s = "../uploads/1494853239609_115.jpg";
+		Matcher matcher = pattern.matcher(s);
+		String result = "";
+		if(matcher.find()){
+			result=matcher.group();
+		}
+
 		return result;
 		
 		

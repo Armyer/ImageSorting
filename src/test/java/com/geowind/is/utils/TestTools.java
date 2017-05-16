@@ -12,8 +12,9 @@ public class TestTools {
 	@Test
 	public void testZhengZe(){
 		
-		Pattern pattern = Pattern.compile("(\\w{11}\\.*?(jpg|gif|png|bmp))");
-		String s = "E:\\env\\apache-tomcat-9.0.0.M19\\webapps\\uploads\\de9a5a10487.jpg";
+		Pattern pattern = Pattern.compile("(\\w{11}.*?(jpg|gif|png|bmp|JPG|GIF|PNG|BMP))");
+//		String s = "E:\\env\\apache-tomcat-9.0.0.M19\\webapps\\uploads\\1494937237094_5278.jpg.JPG";
+		String s = "../uploads/1494853239609_115.jpg";
 		Matcher matcher = pattern.matcher(s);
 
 		if(matcher.find()){
