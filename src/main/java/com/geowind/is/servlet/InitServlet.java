@@ -45,7 +45,7 @@ public class InitServlet extends HttpServlet {
 		path = this.getServletContext().getRealPath("/") + filePath ;
 		file = new File(path);
 		if (!file.exists()) {
-			 System.out.println(path + "虫库创建成功");
+			 System.out.println(path + "图库创建成功");
 			file.mkdirs();
 		}
 

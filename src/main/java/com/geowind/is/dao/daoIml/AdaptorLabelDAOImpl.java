@@ -1,11 +1,11 @@
 package com.geowind.is.dao.daoIml;
 
-import java.util.Date;
+import java.util.List;
 
-import com.geowind.is.dao.AdaptorlLabelDAO;
+import com.geowind.is.dao.AdaptorLabelDAO;
 import com.geowind.is.domain.AdaptorLabel;
 
-public class AdaptorLabelDAOImpl extends BaseDaoImpl<AdaptorLabel> implements AdaptorlLabelDAO {
+public class AdaptorLabelDAOImpl extends BaseDaoImpl<AdaptorLabel> implements AdaptorLabelDAO {
 
 	@Override
 	public long insertLabelOfImage(AdaptorLabel adaptorLabel) {
@@ -17,6 +17,18 @@ public class AdaptorLabelDAOImpl extends BaseDaoImpl<AdaptorLabel> implements Ad
 		long result = insert(sql, args);
 		
 		return result;
+	}
+
+	@Override
+	public AdaptorLabel getAdaptorLabel(String label) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<AdaptorLabel> getPictureLocation(String lableName) {
+		String sql="select * from AdaptorLabel where label=?";
+		return queryForList(sql, lableName);
 	}
 
 }
