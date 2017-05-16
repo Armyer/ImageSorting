@@ -2,7 +2,6 @@ package com.geowind.is.service.serviceIml;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -134,82 +133,83 @@ public class PictureServiceImpl implements PictureService {
 		}
 		return result;
 	}
-	
-	  /**
-	  * 获取8位不重复随机码（取当前时间戳转化为十六进制）
-	  * @author ShelWee
-	  * @param time
-	  * @return
-	  */
-	    public static String toHex(long time){    
-	          return Integer.toHexString((int)time);
-	   }
 
-	
-	    /**
-	     * 获得图片后缀
-	     * @param pictureName
-	     * @return
-	     */
-	    public String getSuffixOfImage(String pictureName){
-	    	
-	    	
-			String a = "\\.(jpg|jpeg|bmp|png|gif|JPG|JPEG|BMP|PNG|GIF)$";
-			Pattern p = Pattern.compile(a);
-			Matcher m = p.matcher(pictureName);
-			String result = "";
-			int i = 0 ;
-			while(m.find()){
-				
-				result = m.group(i);	
-				i++;
-			}
-	    	return result;
-	    	
-	    }
-	    
-	    /**
-	     * 获得100000以内的随机数
-	     * @return
-	     */
-	    public String getRandomNum(){
-	    	Random random = new Random(1000);//指定种子数字
-	    	int i = random.nextInt(100000);
-	    	String result = String.valueOf(i);
-	    	return result;
-	    	
-	    }
+	/**
+	 * 获取8位不重复随机码（取当前时间戳转化为十六进制）
+	 * 
+	 * @author ShelWee
+	 * @param time
+	 * @return
+	 */
+	public static String toHex(long time) {
+		return Integer.toHexString((int) time);
+	}
 
-	    /**
-		 * 判断文件路径是否存在
-		 */
-		public static String checkExist(String filepath) throws Exception{
-		       File file=new File(filepath);
-		      
-		       if (file.exists()) {
-		    	   //判断文件目录的存在 
-		           //System.out.println("文件夹存在！");
-		           
-		       }else{
-		    	   
-		           //System.out.println("文件夹不存在！");
-		                
-		           File newFile=new File(file.getPath());          
-		           newFile.mkdirs();
-		           
-		           //System.out.println("创建文件夹成功！");
-		       }
-		       
-		      return file.getPath(); 
-		      
-		    }
+	/**
+	 * 获得图片后缀
+	 * 
+	 * @param pictureName
+	 * @return
+	 */
+	public String getSuffixOfImage(String pictureName) {
 
-		@Override
-		public int getPidByPname(String pname) {
-			
-			PictureDAOImpl pictureDAOImpl = new PictureDAOImpl();
-			
-			return pictureDAOImpl.queryPidByPname(pname);
+		String a = "\\.(jpg|jpeg|bmp|png|gif|JPG|JPEG|BMP|PNG|GIF)$";
+		Pattern p = Pattern.compile(a);
+		Matcher m = p.matcher(pictureName);
+		String result = "";
+		int i = 0;
+		while (m.find()) {
+
+			result = m.group(i);
+			i++;
 		}
-	
+		return result;
+
+	}
+
+	/**
+	 * 获得100000以内的随机数
+	 * 
+	 * @return
+	 */
+	public String getRandomNum() {
+		Random random = new Random(1000);// 指定种子数字
+		int i = random.nextInt(100000);
+		String result = String.valueOf(i);
+		return result;
+
+	}
+
+	/**
+	 * 判断文件路径是否存在
+	 */
+	public static String checkExist(String filepath) throws Exception {
+		File file = new File(filepath);
+
+		if (file.exists()) {
+			// 判断文件目录的存在
+			// System.out.println("文件夹存在！");
+
+		} else {
+
+			// System.out.println("文件夹不存在！");
+
+			File newFile = new File(file.getPath());
+			newFile.mkdirs();
+
+			// System.out.println("创建文件夹成功！");
+		}
+
+		return file.getPath();
+
+	}
+
+	@Override
+	public int getPidByPname(String pname) {
+
+		PictureDAOImpl pictureDAOImpl = new PictureDAOImpl();
+
+		return pictureDAOImpl.queryPidByPname(pname);
+	}
+
 }

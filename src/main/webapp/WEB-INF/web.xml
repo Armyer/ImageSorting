@@ -49,25 +49,18 @@
 		<servlet-name>VolunteerServlet</servlet-name>
 		<url-pattern>/volunteerServlet</url-pattern>
 	</servlet-mapping>
-<<<<<<< HEAD
 
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
 
-=======
-	
-<<<<<<< HEAD
-    <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
-=======
-	
->>>>>>> 91a95ac14e16c6ae0f5d8489cf3f59bdc9639c52
 	<servlet>
 		<servlet-name>InterestServlet</servlet-name>
 		<servlet-class>com.geowind.is.servlet.InterestServlet</servlet-class>
 		<init-param>
 			<param-name>indexPath</param-name>
 			<param-value>../index</param-value>
-		</init-param> 
+		</init-param>
 	</servlet>
 
 
@@ -104,7 +97,6 @@
 		<servlet-name>NoAdaptorLabelServlet</servlet-name>
 		<url-pattern>/noAdaptorLabelServlet</url-pattern>
 	</servlet-mapping>
-<<<<<<< HEAD
 
 	<servlet>
 		<servlet-name>InitServlet</servlet-name>
@@ -114,15 +106,8 @@
 			<param-name>uploadPath</param-name>
 			<param-value>../uploads</param-value>
 		</init-param>
-		
-		
+
+
 		<load-on-startup>0</load-on-startup>
 	</servlet>
-
-
-
-=======
-	
->>>>>>> da2be0c9442674c2b145941aec9593e746c1579e
->>>>>>> 91a95ac14e16c6ae0f5d8489cf3f59bdc9639c52
 </web-app>
