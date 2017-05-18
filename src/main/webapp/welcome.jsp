@@ -64,7 +64,7 @@
 			<li><a href="taskAllocation.jsp">任务分配系统</a></li>
 			<li><a href="labelDecision.jsp">标签判定系统</a></li>
 			<li><a href="pictureIndex.jsp">图片存储索引系统</a></li>
-			<li><a href="#" class="gallery">导出标签结果</a></li>
+			<li><a href="exportLabel.jsp" class="gallery">导出标签结果</a></li>
 			<li><a class="more"
 				href="${pageContext.request.contextPath }/adminServlet?method=user">查看更多用户</a></li>
 			<li><a
@@ -86,7 +86,7 @@
 						<li><a
 							href="${pageContext.request.contextPath }/adminServlet?method=user"
 							class="users"><span>用户设置</span></a></li>
-						<li><a href="#" class="gallery"><span>上传图片</span></a></li>
+						<li><a href="uploadImageResult.jsp" class="gallery"><span>上传图片</span></a></li>
 						<li><a href="" class="analytics"><span>统计信息</span></a></li>
 					</ul>
 

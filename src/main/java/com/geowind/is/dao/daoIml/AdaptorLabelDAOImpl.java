@@ -31,4 +31,11 @@ public class AdaptorLabelDAOImpl extends BaseDaoImpl<AdaptorLabel> implements Ad
 		return queryForList(sql, lableName);
 	}
 
+	@Override
+	public List<AdaptorLabel> getAdaptorLabels() {
+		
+		String sql="select * from AdaptorLabel where 1=?";
+		return queryForList(sql, 1);
+	}
+
 }

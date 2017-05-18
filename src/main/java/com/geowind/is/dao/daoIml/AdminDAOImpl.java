@@ -29,13 +29,13 @@ public class AdminDAOImpl extends BaseDaoImpl<Admin> implements AdminDAO {
 	@Override
 	public void mergeAdmin(String username, String password, String email,
 			String sex) {
-		String sql="update admin set username=?,password=?,email=?,sex=?";
-		update(sql, username,password,email,sex);
+		String sql = "update admin set username=?,password=?,email=?,sex=?";
+		update(sql, username, password, email, sex);
 	}
 
 	@Override
 	public void deleteUserInfo(int id) {
-		String sql="delete from volunteer where vid=?";
+		String sql = "delete from volunteer where vid=?";
 		update(sql, id);
 	}
 }

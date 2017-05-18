@@ -5,6 +5,9 @@
 	version="3.1">
 	<display-name>ImageSorting</display-name>
 	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	<welcome-file-list>
 		<welcome-file>uploadImageTest.jsp</welcome-file>
 	</welcome-file-list>
 	<context-param>

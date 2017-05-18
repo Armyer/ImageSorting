@@ -35,7 +35,7 @@
 			<!--userinfo-->
 			<div class="userinfodrop">
 				<div class="avatar">
-					<a href=""><img src="images/thumbs/avatarbig.png" /></a>
+					<img src="images/thumbs/avatarbig.png" />
 				</div>
 				<!--avatar-->
 				<div class="userdata">
@@ -88,32 +88,31 @@
 				</ul>
 				<br clear="all" />
 				<div class="contenttitle2 nomargintop">
-					<h3>图片检索</h3>
-				</div>
-			</div>
-
-		</div>
-		<div>
-			<form
-				action="${pageContext.request.contextPath }/adminServlet?method=index"
-				method="post">
-				<input type="text" name="pictureName"> <input type="submit"
-					value="查询" size="5">
-			</form>
-		</div>
-		<br clear="all" /> <br clear="all" /> <br clear="all" />
-
-		<div class="imgtag">
-			<div class="tag1">
-				<div class="imgview">
-					<ul>
-						<c:forEach items="${requestScope.pictures }" var="picture">
-							<li title="photo2"><a href="#"><span><img
-										src="${picture.location}" /></span></a></li>
-						</c:forEach>
-					</ul>
+					<h3>导出标签化的结果</h3>
 				</div>
 				<br clear="all" /> <br clear="all" />
+				<form
+					action="${pageContext.request.contextPath }/adminServlet?method=getLabels"
+					method="post">
+					<table cellpadding="0" cellspacing="0" class="stdtable stdtablecb">
+						<tr>
+							<th>序号</th>
+							<th>标签名</th>
+							<th>对应图片</th>
+							<th>所属用户</th>
+						</tr>
+						<c:forEach items="${requestScope.adaptorLabels }"
+							var="adaptorLabel">
+							<tr>
+								<td>1</td>
+								<td>${adaptorLabel.label }</td>
+								<td>5</td>
+								<td>7</td>
+							</tr>
+						</c:forEach>
+					</table>
+					<input type="submit" value="导出">
+				</form>
 			</div>
 		</div>
 	</div>

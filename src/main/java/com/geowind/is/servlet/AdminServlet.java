@@ -27,7 +27,7 @@ import com.geowind.is.service.serviceIml.VolunteerService;
 
 @WebServlet("/adminServlet")
 public class AdminServlet extends HttpServlet {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	private AdminService adminService = new AdminService();
@@ -52,6 +52,22 @@ public class AdminServlet extends HttpServlet {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
+	}
+
+	// 导出标签化的结果
+	public void getLabels(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		List<AdaptorLabel> adaptorLabels = adaptorLabelService
+				.getAdaptorLabelsForLabel();
+
+		for (AdaptorLabel adaptorLabel : adaptorLabels) {
+
+			request.setAttribute("adaptorLabels", adaptorLabels);
+
+		}
+		request.getRequestDispatcher("/exportLabel.jsp").forward(request,
+				response);
 	}
 
 	// 根据输入的标签名显示图片
@@ -103,9 +119,12 @@ public class AdminServlet extends HttpServlet {
 		} catch (Exception e) {
 		}
 		response.getWriter().write("删除成功。。。");
-		response.setHeader("Refresh", "2;url=" + request.getContextPath()
-				+ "/welcome.jsp");
+		/*
+		 * response.setHeader("Refresh", "2;url=" + request.getContextPath() +
+		 * "/welcome.jsp");
+		 */
 		// request.getRequestDispatcher("/user.jsp").forward(request, response);
+		response.sendRedirect(request.getContextPath() + "/user.jsp");
 	}
 
 	// 修改用户的密码
