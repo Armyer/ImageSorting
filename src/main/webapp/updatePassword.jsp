@@ -4,7 +4,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Editor</title>
+<title>UpdatePassword</title>
 <link rel="stylesheet" href="css/style.default.css" type="text/css" />
 <script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
 <script type="text/javascript"
@@ -59,7 +59,7 @@
 						<li><a
 							href="${pageContext.request.contextPath }/adminServlet?method=user"
 							class="users"><span>用户设置</span></a></li>
-						<li><a href="uploadImageResult.jsp" class="gallery"><span>上传图片</span></a></li>
+						<li><a href="uploadImage.jsp" class="gallery"><span>上传图片</span></a></li>
 						<li><a href="" class="analytics"><span>统计信息</span></a></li>
 					</ul>
 
@@ -70,7 +70,6 @@
 					</div>
 					<br clear="all" /> <br clear="all" /> <br clear="all" /> <br />
 
-
 					<form class="stdform"
 						action="${pageContext.request.contextPath }/adminServlet?method=updatePwd"
 						method="post">
@@ -79,12 +78,12 @@
 								name="id" class="mediuminput" /></span>
 						</p>
 						<p>
-							<label>新密码</label> <span class="field"><input type="text"
+							<label>旧密码</label> <span class="field"><input type="text"
 								name="password" class="mediuminput" /></span>
 						</p>
 						<p>
-							<label>旧密码</label> <span class="field"><input
-								type="password" name="input2" class="mediuminput" /></span>
+							<label>新密码</label> <span class="field"><input type="text"
+								name="input2" class="mediuminput" /></span>
 						</p>
 						<p class="stdformbutton">
 							<button class="submit radius2">修改</button>

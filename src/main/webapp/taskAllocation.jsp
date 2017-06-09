@@ -86,7 +86,7 @@
 						<li><a
 							href="${pageContext.request.contextPath }/adminServlet?method=user"
 							class="users"><span>用户设置</span></a></li>
-						<li><a href="uploadImageResult.jsp" class="gallery"><span>上传图片</span></a></li>
+						<li><a href="uploadImage.jsp" class="gallery"><span>上传图片</span></a></li>
 						<li><a href="" class="analytics"><span>统计信息</span></a></li>
 					</ul>
 

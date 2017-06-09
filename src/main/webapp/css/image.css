@@ -3,7 +3,7 @@ img{border:0;}
 .imgview{
 position:absolute;
 top:30px;
-z-index:80;
+z-index:1000;
 float:left;
 width:857px;
 height:auto;
@@ -12,24 +12,12 @@ min-height:440px;
 	.imgview a{
 	text-decoration:none;
 	}
-	.imgview h2{
-	position:absolute;
-	top:10px;
-	left:10px;
-	width:290px;
-	height:30px;
-	background-color:#FFFFFF;
-	color:#000000;
-	font-size:1.2em;
-	text-indent:10px;
-	line-height:30px;
-	}
 	.imgview ul{
 	position:absolute;
 	top:48px;
 	left:10px;
 	z-index:90;
-	width:290px;
+	width: 290px;
 	height:auto;
 	min-height:230px;
 	background-color:#FFFFFF;
@@ -40,9 +28,6 @@ min-height:440px;
 	height:59px;
 	margin:8px 6px 7px;
 	border:1px solid #DEDEDE;
-	}
-	.imgview ul li strong{
-	display:none;
 	}
 	.imgview ul li a:hover{
 	display:block;

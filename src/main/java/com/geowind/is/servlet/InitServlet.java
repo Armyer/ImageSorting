@@ -2,18 +2,19 @@ package com.geowind.is.servlet;
 
 import javax.servlet.http.HttpServlet;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.List;
-import com.geowind.is.utils.FileUploadUtil;
+
 import javax.servlet.ServletException;
+
+import com.geowind.is.utils.FileUploadUtil;
 
 public class InitServlet extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String filePath = "uploads";
 
 	@Override

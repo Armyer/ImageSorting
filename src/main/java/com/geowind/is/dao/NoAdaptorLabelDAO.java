@@ -11,5 +11,12 @@ public interface NoAdaptorLabelDAO {
 	 */
 	public long insertLabelOfPicture(NoAdaptorLabel noAdaptorLabel);
 	
+	/**
+	 * 查看同一张照片是否有相同标签
+	 * @param label
+	 * @param pid
+	 * @return
+	 */
+	public int queryNumOfSameLabel(String label,int pid);
 
 }

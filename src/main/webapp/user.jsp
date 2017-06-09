@@ -86,7 +86,7 @@
 						<li><a
 							href="${pageContext.request.contextPath }/adminServlet?method=user"
 							class="users"><span>用户设置</span></a></li>
-						<li><a href="uploadImageResult.jsp" class="gallery"><span>上传图片</span></a></li>
+						<li><a href="uploadImage.jsp" class="gallery"><span>上传图片</span></a></li>
 						<li><a href="" class="analytics"><span>统计信息</span></a></li>
 					</ul>
 
@@ -128,7 +128,7 @@
 									<td>${volunteer.birthday }</td>
 									<td>${volunteer.status }</td>
 									<td class="center"><a href="updatePassword.jsp"
-										class="edit">修改密码</a></td>
+										class="edit">编辑</a></td>
 									<td class="center"><a id="delete"
 										href="${pageContext.request.contextPath }/adminServlet?method=deleteUser&id=${volunteer.vid}"
 										onclick=" return confirm('确定要删除${volunteer.username }的信息吗?')">删除</a></td>

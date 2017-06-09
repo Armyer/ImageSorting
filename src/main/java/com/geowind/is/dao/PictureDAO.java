@@ -49,5 +49,10 @@ public interface PictureDAO {
 	 */
 	public Picture getPicture(int pid);
 
+	/**
+	 * 根据传入的图片得位置来获取图片
+	 * @return
+	 */
+	public Picture getPictureByLoaction(String location);
 
 }

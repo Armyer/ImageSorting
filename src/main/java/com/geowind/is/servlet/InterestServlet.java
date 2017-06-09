@@ -12,8 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.geowind.is.domain.ImageURL;
 import com.geowind.is.domain.Picture;
-import com.geowind.is.service.serviceIml.InterestServiceImpl;
-import com.geowind.is.service.serviceIml.VolunteerService;
+import com.geowind.is.service.*;
 import com.google.gson.Gson;
 
 public class InterestServlet extends BasicServlet{

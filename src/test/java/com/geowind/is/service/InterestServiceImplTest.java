@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import com.geowind.is.domain.ImageURL;
 import com.geowind.is.domain.Picture;
-import com.geowind.is.service.serviceIml.InterestServiceImpl;
+import com.geowind.is.service.*;
 
 public class InterestServiceImplTest {
 

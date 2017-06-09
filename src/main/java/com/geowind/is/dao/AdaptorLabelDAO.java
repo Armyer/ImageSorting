@@ -31,7 +31,11 @@ public interface AdaptorLabelDAO {
 
 	/**
 	 * 导出标签化的结果
+	 * 
 	 * @return
 	 */
-	public List<AdaptorLabel> getAdaptorLabels();
+	public List<String> getAdaptorLabels();
+	
+	public AdaptorLabel getAdaptorLabel(Integer id);
+	
 }

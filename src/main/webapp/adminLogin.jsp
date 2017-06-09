@@ -48,7 +48,8 @@
 			</div>
 
 			<form id="login"
-				action="${pageContext.request.contextPath }/adminServlet?method=adminLogin" method="post">
+				action="${pageContext.request.contextPath }/adminServlet?method=adminLogin"
+				method="post">
 
 				<div class="username">
 					<div class="usernameinner">
@@ -63,10 +64,6 @@
 				</div>
 
 				<button>登录</button>
-
-				<div class="keep">
-					<input type="checkbox" /> 记住密码
-				</div>
 			</form>
 
 		</div>

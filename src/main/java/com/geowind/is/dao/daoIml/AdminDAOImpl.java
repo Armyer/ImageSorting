@@ -3,10 +3,13 @@ package com.geowind.is.dao.daoIml;
 import java.util.List;
 
 import com.geowind.is.dao.AdminDAO;
+import com.geowind.is.domain.AdaptorLabel;
 import com.geowind.is.domain.Admin;
 import com.geowind.is.domain.Volunteer;
 
 public class AdminDAOImpl extends BaseDaoImpl<Admin> implements AdminDAO {
+
+	private BaseDaoImpl<AdaptorLabel> baseDaoImpl = new BaseDaoImpl<AdaptorLabel>();
 
 	@Override
 	public void mergeVolunteer(Volunteer volunteer) {
@@ -27,15 +30,23 @@ public class AdminDAOImpl extends BaseDaoImpl<Admin> implements AdminDAO {
 	}
 
 	@Override
-	public void mergeAdmin(String username, String password, String email,
-			String sex) {
-		String sql = "update admin set username=?,password=?,email=?,sex=?";
-		update(sql, username, password, email, sex);
+	public void mergeAdmin(String username, String password, String email) {
+		String sql = "update admin set username=?,password=?,email=?";
+		update(sql, username, password, email);
 	}
 
 	@Override
-	public void deleteUserInfo(int id) {
-		String sql = "delete from volunteer where vid=?";
-		update(sql, id);
+	public boolean deleteUserInfo(int id) {
+
+		String sql = "select * from adaptorlabel where vid=?";
+		AdaptorLabel adaptorLabel = baseDaoImpl.query(sql, id);
+		if (adaptorLabel != null) {
+			return false;
+		} else {
+			String sql1 = "delete from volunteer where vid=?";
+			update(sql1, id);
+			return true;
+		}
+
 	}
 }

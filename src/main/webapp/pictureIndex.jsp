@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>控制台页面</title>
+<link rel="stylesheet" type="text/css" href="css/default.css">
 <link rel="stylesheet" href="css/style.default.css" type="text/css" />
 <link rel="stylesheet" href="css/image.css" type="text/css" />
 <script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
@@ -83,7 +84,7 @@
 					<li><a
 						href="${pageContext.request.contextPath }/adminServlet?method=user"
 						class="users"><span>用户设置</span></a></li>
-					<li><a href="uploadImageResult.jsp" class="gallery"><span>上传图片</span></a></li>
+					<li><a href="uploadImage.jsp" class="gallery"><span>上传图片</span></a></li>
 					<li><a href="" class="analytics"><span>统计信息</span></a></li>
 				</ul>
 				<br clear="all" />
@@ -91,24 +92,22 @@
 					<h3>图片检索</h3>
 				</div>
 			</div>
+		</div>
+		<form
+			action="${pageContext.request.contextPath }/adminServlet?method=index"
+			method="post">
+			<input type="text" name="pictureName"> <input type="submit"
+				value="查询" size="5">
+		</form>
 
-		</div>
-		<div>
-			<form
-				action="${pageContext.request.contextPath }/adminServlet?method=index"
-				method="post">
-				<input type="text" name="pictureName"> <input type="submit"
-					value="查询" size="5">
-			</form>
-		</div>
-		<br clear="all" /> <br clear="all" /> <br clear="all" />
+		<br clear="all" /> <br clear="all" />
 
 		<div class="imgtag">
 			<div class="tag1">
 				<div class="imgview">
 					<ul>
 						<c:forEach items="${requestScope.pictures }" var="picture">
-							<li title="photo2"><a href="#"><span><img
+							<li><a href="#"><span><img
 										src="${picture.location}" /></span></a></li>
 						</c:forEach>
 					</ul>

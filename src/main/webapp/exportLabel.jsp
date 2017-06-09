@@ -8,18 +8,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>控制台页面</title>
 <link rel="stylesheet" href="css/style.default.css" type="text/css" />
-<link rel="stylesheet" href="css/image.css" type="text/css" />
 <script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
-<script type="text/javascript"
-	src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.flot.min.js"></script>
-<script type="text/javascript"
-	src="js/plugins/jquery.flot.resize.min.js"></script>
-<script type="text/javascript" src="js/plugins/jquery.slimscroll.js"></script>
-<script type="text/javascript" src="js/custom/general.js"></script>
-<script type="text/javascript" src="js/custom/dashboard.js"></script>
+<script type="text/javascript">
+	$(document)
+			.ready(
+					function() {
+						$(".picture")
+								.change(
+										function() {
+											var context = $(
+													":input[name='filename']")
+													.val();
+											$("#img").attr({
+												src : context,
+												alt : "Test Image"
+											});
+											$(".showPicture").show();
+
+											var url = "${pageContext.request.contextPath }/adminServlet?method=getLabels";
+											var args = {
+												"filename" : context,
+												"time" : new Date()
+											}
+											$.post(url, args);
+											return false;
+										});
+
+					});
+</script>
 </head>
 <body class="withvernav">
 	<div class="topheader">
@@ -46,13 +62,9 @@
 						<li><a href="index.jsp">退出</a></li>
 					</ul>
 				</div>
-				<!--userdata-->
 			</div>
-			<!--userinfodrop-->
 		</div>
-		<!--right-->
 	</div>
-	<!--topheader-->
 	<div class="header">
 		<ul class="headermenu">
 			<li class="current"><a href="welcome.jsp"><span
@@ -83,7 +95,7 @@
 					<li><a
 						href="${pageContext.request.contextPath }/adminServlet?method=user"
 						class="users"><span>用户设置</span></a></li>
-					<li><a href="uploadImageResult.jsp" class="gallery"><span>上传图片</span></a></li>
+					<li><a href="uploadImage.jsp" class="gallery"><span>上传图片</span></a></li>
 					<li><a href="" class="analytics"><span>统计信息</span></a></li>
 				</ul>
 				<br clear="all" />
@@ -94,25 +106,20 @@
 				<form
 					action="${pageContext.request.contextPath }/adminServlet?method=getLabels"
 					method="post">
-					<table cellpadding="0" cellspacing="0" class="stdtable stdtablecb">
-						<tr>
-							<th>序号</th>
-							<th>标签名</th>
-							<th>对应图片</th>
-							<th>所属用户</th>
-						</tr>
-						<c:forEach items="${requestScope.adaptorLabels }"
-							var="adaptorLabel">
-							<tr>
-								<td>1</td>
-								<td>${adaptorLabel.label }</td>
-								<td>5</td>
-								<td>7</td>
-							</tr>
-						</c:forEach>
-					</table>
-					<input type="submit" value="导出">
+					<input class="picture" type="file" name="filename" size="60"><br
+						clear="all" /> <br clear="all" />
+					<div class="showPicture">
+						<img src="${requestScope.path }" id="img" height="300px" width="360px" />
+					</div>
+					<br clear="all" /> <input type="submit" value="导出标签">
 				</form>
+				<br clear="all" /> 
+				
+				<font size="4px" color="black">picture_name:${requestScope.picNameString }</font><br/><br/><br/>
+				<font size="4px" color="black">finish_time:${requestScope.finishdate }</font><br/><br/><br/>
+				<font size="4px" color="black">labels:${requestScope.labels }</font>
+				<br clear="all" /> 
+				<br clear="all" /> 
 			</div>
 		</div>
 	</div>

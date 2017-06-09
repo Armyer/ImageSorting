@@ -85,4 +85,10 @@ public class PictureDAOImpl extends BaseDaoImpl<Picture> implements PictureDAO {
 		return query(sql, id);
 	}
 
+	@Override
+	public Picture getPictureByLoaction(String location) {
+		String sql="select * from picture where location=?";
+		return query(sql, location);
+	}
+
 }

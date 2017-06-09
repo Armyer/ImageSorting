@@ -93,7 +93,7 @@ body.withmenucoll2 { background-position: 35px 0; } /* with menu style 2 in coll
 /***** 4. LOGIN PAGE *****/
 /*************************/
 
-.loginpage { background: #fff url(../images/patternbg.png); }
+.loginpage { background: #114178 url(../images/patternbg.png); }
 .loginbox { 
 	width: 350px; padding: 5px; background: #fff; margin: 7% auto 0 auto; -moz-border-radius: 2px; -webkit-border-radius: 2px;
 	border-radius: 2px; -moz-box-shadow: 0 0 2px rgba(0,0,0,0.3); -webkit-box-shadow: 0 0 2px rgba(0,0,0,0.3); 

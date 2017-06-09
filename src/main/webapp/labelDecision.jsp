@@ -75,7 +75,6 @@
 				</ul></li>
 		</ul>
 	</div>
-	<!--leftmenu-->
 	<div class="centercontent">
 		<div id="contentwrapper" class="contentwrapper">
 
@@ -86,19 +85,21 @@
 						<li><a
 							href="${pageContext.request.contextPath }/adminServlet?method=user"
 							class="users"><span>用户设置</span></a></li>
-						<li><a href="uploadImageResult.jsp" class="gallery"><span>上传图片</span></a></li>
+						<li><a href="uploadImage.jsp" class="gallery"><span>上传图片</span></a></li>
 						<li><a href="" class="analytics"><span>统计信息</span></a></li>
 					</ul>
 
 					<br clear="all" />
 
 					<div class="contenttitle2 nomargintop">
-						<h3>任务分配</h3>
+						<h3>标签判定</h3>
 					</div>
 					<br clear="all" /> <br clear="all" /> <br clear="all" /> <br />
-
 				</div>
 				<!--two_third dashboard_left -->
+				
+				
+				
 			</div>
 		</div>
 	</div>

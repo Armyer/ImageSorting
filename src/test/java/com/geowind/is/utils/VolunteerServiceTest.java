@@ -34,8 +34,8 @@ public class VolunteerServiceTest {
 		Volunteer volunteer = new Volunteer(7, "едЫФ", "1234", new Date(
 				new java.util.Date().getTime()), "ХЎ", 123, "333@qq.com",
 				new Date(new java.util.Date().getTime()), "111", 1234, "122");
-		boolean flag = volunteerservice.ValidateLoginusername(volunteer.getUsername());
-		System.out.println(flag);
+		//boolean flag = volunteerservice.ValidateLoginusername(volunteer.getUsername());
+		//System.out.println(flag);
 	}
 
 	@Test
