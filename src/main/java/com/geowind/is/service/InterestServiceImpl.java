@@ -49,8 +49,9 @@ public class InterestServiceImpl  {
 			
 			
 			ImageURL imageURL = new ImageURL();
-			
-			String url = "http://192.168.0.116:8080/uploads/"+getNameOfURL(finalPictureList.get(i).getLocation());
+
+			System.out.println("lalal:"+finalPictureList.get(i).getLocation());
+			String url = "http://192.168.0.126:8080/uploads/"+getNameOfURL(finalPictureList.get(i).getLocation());
 			
 			imageURL.setImageUrl(url);
 			//imageURL.setPid(finalPictureList.get(i).getPid());
@@ -76,8 +77,8 @@ public class InterestServiceImpl  {
 //		String result = url.substring(47);
 		
 		Pattern pattern = Pattern.compile("(\\w{11}.*?(jpg|gif|png|bmp|JPG|GIF|PNG|BMP))");
-		String s = "../uploads/1494853239609_115.jpg";
-		Matcher matcher = pattern.matcher(s);
+		//String s = "../uploads/1494853239609_115.jpg";
+		Matcher matcher = pattern.matcher(url);
 		String result = "";
 		if(matcher.find()){
 			result=matcher.group();

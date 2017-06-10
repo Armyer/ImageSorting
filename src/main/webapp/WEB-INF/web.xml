@@ -5,7 +5,7 @@
 	version="3.1">
 	<display-name>ImageSorting</display-name>
 	<welcome-file-list>
-		<welcome-file>uploadImageTest.jsp</welcome-file>
+		<welcome-file>adminLogin.jsp</welcome-file>
 	</welcome-file-list>
 	<context-param>
 		<param-name>encoding</param-name>

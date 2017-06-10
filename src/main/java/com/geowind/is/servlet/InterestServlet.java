@@ -65,7 +65,7 @@ public class InterestServlet extends BasicServlet{
 		
 		//获得志愿者ID号
 		String volunteerId = request.getParameter("username");
-		
+		System.out.println("vid:"+volunteerId);
 		
 		InterestServiceImpl interestServiceImpl = new InterestServiceImpl();
 		

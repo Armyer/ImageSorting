@@ -15,7 +15,7 @@ public class SearcherTest {
 		
 		//String path = "E:\\env\\test-pic\\³µÕ¾\\³µÕ¾1.jpg";
 		
-		String path = "E:\\env\\apache-tomcat-9.0.0.M19\\webapps\\ImageSorting\\..\\uploads\\de9a5a10487.jpg";
+		String path = "E:\\env\\apache-tomcat-9.0.0.M19\\webapps\\uploads\\de9a5a10487.jpg";
 		
 		String indexerPath = "E:\\env\\apache-tomcat-9.0.0.M19\\webapps\\index";
 		
