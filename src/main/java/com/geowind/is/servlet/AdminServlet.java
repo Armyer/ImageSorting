@@ -21,19 +21,18 @@ import com.geowind.is.domain.Admin;
 import com.geowind.is.domain.Picture;
 import com.geowind.is.domain.Volunteer;
 import com.geowind.is.exception.VolunteerException;
-import com.geowind.is.service.AdaptorLabelService;
-import com.geowind.is.service.AdminService;
 import com.geowind.is.service.*;
 
 @WebServlet("/adminServlet")
 public class AdminServlet extends HttpServlet {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	private AdminService adminService = new AdminService();
 	private VolunteerService volunteerService = new VolunteerService();
 	private AdaptorLabelService adaptorLabelService = new AdaptorLabelService();
 	private PictureDAO pictureDAO = new PictureDAOImpl();
+	private PictureServiceImpl pictureServiceImpl = new PictureServiceImpl();
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -51,6 +50,35 @@ public class AdminServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
+		}
+	}
+
+	// 导出标签化的结果
+	public void getLabels(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		String pathString = request.getParameter("filename");
+		String path = pathString.replace('\\', '/');
+		if (path != null && !path.equals("")) {
+
+			Picture picture = pictureServiceImpl.getPicturewithLocation(path);
+			if (picture != null) {
+				String picNameString = picture.getPname();
+				AdaptorLabel adaptorLabel = adaptorLabelService
+						.getAdaptorLabel(picture.pid);
+				String finishdate = adaptorLabel.getConfirmDate();
+				String labels = adaptorLabel.getLabel();
+				request.setAttribute("picNameString", picNameString);
+				request.setAttribute("finishdate", finishdate);
+				request.setAttribute("labels", labels);
+				request.setAttribute("path", path);
+				request.getRequestDispatcher("/exportLabel.jsp").forward(
+						request, response);
+
+			} else {
+				response.sendRedirect(request.getContextPath() + "/error.jsp");
+			}
+
 		}
 	}
 
@@ -81,7 +109,6 @@ public class AdminServlet extends HttpServlet {
 				// 进行转发
 				request.getRequestDispatcher("/pictureIndex.jsp").forward(
 						request, response);
-				/* System.out.println("----"); */
 			}
 		} else {
 			response.sendRedirect(request.getContextPath() + "/error.jsp");
@@ -99,38 +126,37 @@ public class AdminServlet extends HttpServlet {
 		int id = -1;
 		try {
 			id = Integer.parseInt(iddStr);
-			adminService.delete(id);
+			boolean result = adminService.delete(id);
+			if (result) {
+				user(request, response);
+				return;
+			} else {
+				response.getWriter().write("该用户暂时不能删除.");
+				response.setHeader("Refresh",
+						"2;url=" + request.getContextPath() + "/user.jsp");
+			}
 		} catch (Exception e) {
 		}
-		response.getWriter().write("删除成功。。。");
-		response.setHeader("Refresh", "2;url=" + request.getContextPath()
-				+ "/welcome.jsp");
-		// request.getRequestDispatcher("/user.jsp").forward(request, response);
 	}
 
 	// 修改用户的密码
 	public void updatePwd(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException,
 			UserException, VolunteerException {
-
 		// 处理乱码
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
 
-		String newPass = request.getParameter("password");
-		String oldPass = request.getParameter("input2");
+		String oldPass = request.getParameter("password");
+		String newPass = request.getParameter("input2");
 		String id = request.getParameter("id");
 		if (!newPass.equals("") && newPass != null && !oldPass.equals("")
 				&& oldPass != null && !id.equals("") && id != null) {
 			volunteerService.updatePassword(id, newPass, oldPass);
-			response.sendRedirect(request.getContextPath() + "/user.jsp");
-			/*
-			 * request.getRequestDispatcher("/user.jsp") .forward(request,
-			 * response);
-			 */
+			// 调用显示用户的信息，重新加载用户的信息
+			user(request, response);
 			return;
 		}
-
 		response.sendRedirect(request.getContextPath() + "/error.jsp");
 	}
 
@@ -144,8 +170,7 @@ public class AdminServlet extends HttpServlet {
 		String username = request.getParameter("input1");
 		String password = request.getParameter("input2");
 		String email = request.getParameter("input3");
-		String sex = request.getParameter("input4");
-		adminService.update(username, password, email, sex);
+		adminService.update(username, password, email);
 		response.getWriter().write("修改成功,2秒后将跳转到登录界面请重新登录...");
 		response.setHeader("Refresh", "2;url=" + request.getContextPath()
 				+ "/index.jsp");

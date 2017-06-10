@@ -41,11 +41,11 @@ public interface AdminDAO {
 	 * @param email
 	 * @param sex
 	 */
-	public void mergeAdmin(String username,String password,String email,String sex);
+	public void mergeAdmin(String username,String password,String email);
 	
 	/**
 	 * É¾³ýÓÃ»§
 	 * @param id
 	 */
-	public void deleteUserInfo(int id);
+	public boolean deleteUserInfo(int id);
 }

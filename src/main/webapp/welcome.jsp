@@ -9,13 +9,11 @@
 <title>控制台页面</title>
 <link rel="stylesheet" href="css/style.default.css" type="text/css" />
 <script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
-<script type="text/javascript"
-	src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
 <script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
 <script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
 <script type="text/javascript" src="js/plugins/jquery.flot.min.js"></script>
-<script type="text/javascript"
-	src="js/plugins/jquery.flot.resize.min.js"></script>
+<script type="text/javascript" src="js/plugins/jquery.flot.resize.min.js"></script>
 <script type="text/javascript" src="js/plugins/jquery.slimscroll.js"></script>
 <script type="text/javascript" src="js/custom/general.js"></script>
 <script type="text/javascript" src="js/custom/dashboard.js"></script>
@@ -64,7 +62,7 @@
 			<li><a href="taskAllocation.jsp">任务分配系统</a></li>
 			<li><a href="labelDecision.jsp">标签判定系统</a></li>
 			<li><a href="pictureIndex.jsp">图片存储索引系统</a></li>
-			<li><a href="#" class="gallery">导出标签结果</a></li>
+			<li><a href="exportLabel.jsp" class="gallery">导出标签结果</a></li>
 			<li><a class="more"
 				href="${pageContext.request.contextPath }/adminServlet?method=user">查看更多用户</a></li>
 			<li><a
@@ -86,7 +84,7 @@
 						<li><a
 							href="${pageContext.request.contextPath }/adminServlet?method=user"
 							class="users"><span>用户设置</span></a></li>
-						<li><a href="#" class="gallery"><span>上传图片</span></a></li>
+						<li><a href="uploadImage.jsp" class="gallery"><span>上传图片</span></a></li>
 						<li><a href="" class="analytics"><span>统计信息</span></a></li>
 					</ul>
 
@@ -117,7 +115,6 @@
 					<!--overviewhead-->
 
 					<br clear="all" />
-
 					<table cellpadding="0" cellspacing="0" border="0"
 						class="stdtable overviewtable">
 						<colgroup>
@@ -146,20 +143,17 @@
 									</div>
 								</td>
 								<td>67.3%</td>
-								<td>856, 220</td>
-								<td class="center">32, 012</td>
+								<td>220</td>
+								<td class="center">12</td>
 								<td class="center">20.5</td>
 							</tr>
 						</tbody>
 					</table>
-
 					<br clear="all" />
 
 					<div id="chartplace" style="height: 300px;"></div>
 
-					<br clear="all" />
-
-					<table cellpadding="0" cellspacing="0" border="0"
+					<%-- <table cellpadding="0" cellspacing="0" border="0"
 						class="stdtable stdtablecb overviewtable2">
 						<colgroup>
 							<col class="con0" style="width: 4%" />
@@ -179,12 +173,9 @@
 								<th class="head1">5</th>
 							</tr>
 						</thead>
-					</table>
-
+					</table> --%>
 					<br />
-
 				</div>
-				<!--two_third dashboard_left -->
 
 				<div class="one_third last dashboard_right">
 					<div class="widgetbox">

@@ -37,14 +37,15 @@ public class VolunteerService {
 	 */
 	public void updatePassword(String uid, String newPass, String oldPass)
 			throws UserException, VolunteerException {
-
 		try {
 			/*
 			 * 1. 校验老密码
 			 */
 			boolean bool = volunteerDAO.findByUidAndPassword(uid, oldPass);
 			if (!bool) {// 如果老密码错误
+				System.out.println("老密码错误！");
 				throw new VolunteerException("老密码错误！");
+
 			}
 
 			/*
@@ -123,14 +124,14 @@ public class VolunteerService {
 		volunteerDAO.mergePwd(username, password);
 	}
 
-	
 	/**
 	 * 通过用户名获取ID
+	 * 
 	 * @param username
 	 * @return
 	 */
-	public int getIDByUserName(String username){
-		//System.out.println("username:"+username);
+	public int getIDByUserName(String username) {
+		// System.out.println("username:"+username);
 		VolunteerDAOImpl volunteerDAOImpl = new VolunteerDAOImpl();
 		int id = volunteerDAOImpl.queryIdByName(username);
 		return id;

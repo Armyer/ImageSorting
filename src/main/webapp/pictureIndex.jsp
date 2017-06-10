@@ -7,23 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>控制台页面</title>
-
-<link
-	href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css"
-	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/default.css">
-<link href="css/fileinput.css" media="all" rel="stylesheet"
-	type="text/css" />
-<script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"
-	type="text/javascript"></script>
-<script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
-<script src="js/fileinput.js" type="text/javascript"></script>
-<!--简体中文-->
-<script src="js/locales/zh.js" type="text/javascript"></script>
-<!--繁体中文-->
-<script src="js/locales/zh-TW.js" type="text/javascript"></script>
-<script src="http://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
 <link rel="stylesheet" href="css/style.default.css" type="text/css" />
 <link rel="stylesheet" href="css/image.css" type="text/css" />
 <script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
@@ -82,7 +66,7 @@
 			<li><a href="taskAllocation.jsp">任务分配系统</a></li>
 			<li><a href="labelDecision.jsp">标签判定系统</a></li>
 			<li><a href="pictureIndex.jsp">图片存储索引系统</a></li>
-			<li><a href="#" class="gallery">导出标签结果</a></li>
+			<li><a href="exportLabel.jsp" class="gallery">导出标签结果</a></li>
 			<li><a class="more"
 				href="${pageContext.request.contextPath }/adminServlet?method=user">查看更多用户</a></li>
 			<li><a
@@ -100,58 +84,37 @@
 					<li><a
 						href="${pageContext.request.contextPath }/adminServlet?method=user"
 						class="users"><span>用户设置</span></a></li>
-					<li><a href="pictureIndex.jsp" class="gallery"><span>上传图片</span></a></li>
+					<li><a href="uploadImage.jsp" class="gallery"><span>上传图片</span></a></li>
 					<li><a href="" class="analytics"><span>统计信息</span></a></li>
 				</ul>
 				<br clear="all" />
 				<div class="contenttitle2 nomargintop">
 					<h3>图片检索</h3>
 				</div>
-				
-				
-				
 			</div>
-			
-			
-
 		</div>
-		
-		 
-		<!--  <div id="uploadImages">-->
-			<!-- <form
-				action="${pageContext.request.contextPath }/adminServlet?method=index"
-				method="post">
-				<input type="text" name="pictureName"> <input type="submit"
-					value="查询" size="5">
-			</form>-->
-			
-			
+		<form
+			action="${pageContext.request.contextPath }/adminServlet?method=index"
+			method="post">
+			<input type="text" name="pictureName"> <input type="submit"
+				value="查询" size="5">
+		</form>
 
-		<!--  </div>-->
-		
-		<br clear="all" /> <br clear="all" /> <br clear="all" />
+		<br clear="all" /> <br clear="all" />
 
 		<div class="imgtag">
 			<div class="tag1">
 				<div class="imgview">
-					<!--<ul>
+					<ul>
 						<c:forEach items="${requestScope.pictures }" var="picture">
-							<li title="photo2"><a href="#"><span><img
+							<li><a href="#"><span><img
 										src="${picture.location}" /></span></a></li>
 						</c:forEach>
-					</ul>-->
-					<form   enctype="multipart/form-data" action="pictureServlet?method=uploadImages" method="post">
-                        <input id="uploadImg" name="uploadImg"  class="file" type="file" multiple data-min-file-count="1" multiple data-show-upload="false" data-show-caption="true" data-allowed-file-extensions='["jpg", "png","gif","jpeg"]'>
-                        <br>
-                        <button  type="submit" class="btn btn-primary">Submit</button>
-                        <button type="reset" class="btn btn-default">Reset</button>
-                    </form>
-					
+					</ul>
 				</div>
 				<br clear="all" /> <br clear="all" />
 			</div>
 		</div>
 	</div>
-	
 </body>
 </html>

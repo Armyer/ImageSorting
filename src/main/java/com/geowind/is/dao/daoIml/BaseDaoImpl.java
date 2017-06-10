@@ -5,15 +5,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.List;
+import java.util.logging.SocketHandler;
 
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import com.geowind.is.dao.Dao;
 import com.geowind.is.db.JDBCUtils;
-import com.geowind.is.exception.DBException;
 import com.geowind.is.utils.ReflectionUtils;
 
 public class BaseDaoImpl<T> implements Dao<T> {
@@ -146,7 +147,7 @@ public class BaseDaoImpl<T> implements Dao<T> {
 		Connection connection = null;
 		try {
 			connection = JDBCUtils.getConnection();
-			return (List<V>) queryRunner.query(connection, sql, new ScalarHandler(),
+			return (List<V>) queryRunner.query(connection, sql, (ResultSetHandler<T>) new SocketHandler(),
 					args);
 		} catch (Exception e) {
 			e.printStackTrace();

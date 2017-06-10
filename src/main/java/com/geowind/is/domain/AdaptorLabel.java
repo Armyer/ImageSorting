@@ -1,7 +1,5 @@
 package com.geowind.is.domain;
 
-import java.util.Date;
-
 
 /**
  * 已采纳的标签类

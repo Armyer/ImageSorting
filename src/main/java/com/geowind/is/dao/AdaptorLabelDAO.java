@@ -22,6 +22,20 @@ public interface AdaptorLabelDAO {
 	 */
 	public List<AdaptorLabel> getPictureLocation(String lableName);
 
-	// DAO层插入数据
+	/**
+	 * 
+	 * @param adaptorLabel
+	 * @return
+	 */
 	public long insertLabelOfImage(AdaptorLabel adaptorLabel);
+
+	/**
+	 * 导出标签化的结果
+	 * 
+	 * @return
+	 */
+	public List<String> getAdaptorLabels();
+	
+	public AdaptorLabel getAdaptorLabel(Integer id);
+	
 }

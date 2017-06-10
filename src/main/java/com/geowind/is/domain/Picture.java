@@ -7,13 +7,6 @@ package com.geowind.is.domain;
  *
  */
 public class Picture {
-
-	@Override
-	public String toString() {
-		return "Picture [pid=" + pid + ", pname=" + pname + ", location="
-				+ location + ", valid=" + valid + ", status=" + status + "]";
-	}
-
 	// 图片id
 	public int pid;
 
@@ -25,7 +18,7 @@ public class Picture {
 
 	// 是否有效
 	public int valid;
-	
+
 	public String date;
 
 	public String getDate() {
@@ -38,6 +31,16 @@ public class Picture {
 
 	// 备用
 	public String status;
+
+	private AdaptorLabel adaptorLabel;
+
+	public AdaptorLabel getAdaptorLabel() {
+		return adaptorLabel;
+	}
+
+	public void setAdaptorLabel(AdaptorLabel adaptorLabel) {
+		this.adaptorLabel = adaptorLabel;
+	}
 
 	public Integer getPid() {
 		return pid;
@@ -77,6 +80,12 @@ public class Picture {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	@Override
+	public String toString() {
+		return "Picture [pid=" + pid + ", pname=" + pname + ", location="
+				+ location + ", valid=" + valid + ", status=" + status + "]";
 	}
 
 }

@@ -1,9 +1,8 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=91a95ac14e16c6ae0f5d8489cf3f59bdc9639c52
 eclipse.preferences.version=1
 encoding//src/main/java/com/geowind/is/servlet/BasicServlet.java=UTF-8
 encoding//src/main/java/com/geowind/is/utils/Md5Utils.java=UTF-8
 encoding//src/main/webapp/adminLogin.jsp=UTF-8
-<<<<<<< HEAD
-encoding//src/main/webapp/uploadImageTest.jsp=UTF-8
-=======
 encoding//src/main/webapp/taskAllocation.jsp=UTF-8
->>>>>>> 91a95ac14e16c6ae0f5d8489cf3f59bdc9639c52

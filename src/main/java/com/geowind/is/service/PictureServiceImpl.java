@@ -15,6 +15,7 @@ import javax.servlet.ServletContext;
 
 import org.apache.commons.fileupload.FileItem;
 
+import com.geowind.is.dao.PictureDAO;
 import com.geowind.is.dao.daoIml.PictureDAOImpl;
 import com.geowind.is.domain.Picture;
 
@@ -210,4 +211,12 @@ public class PictureServiceImpl  {
 		return pictureDAOImpl.queryPidByPname(pname);
 	}
 
+	public Picture getPicturewithLocation(String location){
+		
+		Picture picture=pictureDAOImpl.getPictureByLoaction(location);
+		if (picture!=null) {
+			return picture;
+		}
+		return null;
+	}
 }

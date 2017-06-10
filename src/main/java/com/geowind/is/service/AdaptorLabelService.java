@@ -26,6 +26,11 @@ public class AdaptorLabelService {
 		return null;
 	}
 
+	/**
+	 * 
+	 * @param label
+	 * @return
+	 */
 	public List<AdaptorLabel> getPictureLoaction(String label) {
 
 		return adaptorLabelDAO.getPictureLocation(label);
@@ -45,4 +50,23 @@ public class AdaptorLabelService {
 			
 		//}
 
+	public List<String> getAdaptorLabelsForLabel() {
+
+		List<String> adaptorLabels = adaptorLabelDAO
+				.getAdaptorLabels();
+
+		if (adaptorLabels != null) {
+
+			return adaptorLabelDAO.getAdaptorLabels();
+		} else {
+
+			return null;
+		}
+	}
+	
+	public AdaptorLabel getAdaptorLabel(Integer pid){
+		
+		return adaptorLabelDAO.getAdaptorLabel(pid);
+	}
+	
 }
