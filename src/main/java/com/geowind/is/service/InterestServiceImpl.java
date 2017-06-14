@@ -51,7 +51,7 @@ public class InterestServiceImpl  {
 			ImageURL imageURL = new ImageURL();
 
 			System.out.println("lalal:"+finalPictureList.get(i).getLocation());
-			String url = "http://192.168.0.126:8080/uploads/"+getNameOfURL(finalPictureList.get(i).getLocation());
+			String url = "http://192.168.1.119:8080/uploads/"+getNameOfURL(finalPictureList.get(i).getLocation());
 			
 			imageURL.setImageUrl(url);
 			//imageURL.setPid(finalPictureList.get(i).getPid());

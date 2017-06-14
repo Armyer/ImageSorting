@@ -118,7 +118,7 @@
 				<div class="imgview">
 					<form enctype="multipart/form-data"
 						action="pictureServlet?method=uploadImages" method="post">
-						<input id="uploadImg" name="uploadImg" class="file" type="file">
+						<input id="uploadImg" name="uploadImg" type="file" class="file" multiple data-show-upload="false" data-show-caption="true" data-allowed-file-extensions='["jpg", "png","gif","jpeg"]'>
 						<br>
 						<button type="submit" class="btn btn-primary">Submit</button>
 						<button type="reset" class="btn btn-default">Reset</button>

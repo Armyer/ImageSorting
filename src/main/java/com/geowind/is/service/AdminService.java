@@ -15,6 +15,7 @@ import com.geowind.is.domain.Admin;
  *
  */
 public class AdminService {
+	
 	private AdminDAO adminDAO = new AdminDAOImpl();
 
 	// µÇÂ¼
@@ -26,6 +27,12 @@ public class AdminService {
 		return false;
 	}
 
+	/**
+	 * 
+	 * @param username
+	 * @param password
+	 * @return
+	 */
 	public Admin getAdmina(String username, String password) {
 		return adminDAO.getAdmin(username, password);
 	}

@@ -25,31 +25,27 @@ public class AdaptorLabelService {
 		}
 		return null;
 	}
-
+	
 	/**
 	 * 
-	 * @param label
+	 * @param 获得图片位置
 	 * @return
 	 */
 	public List<AdaptorLabel> getPictureLoaction(String label) {
 
 		return adaptorLabelDAO.getPictureLocation(label);
 	}
-	
-//	//实现设置图片收录标签功能
-//		public int setLabelOfImage(AdaptorLabel adaptorLabel) {
-//			
-//			AdaptorLabelServiceImpl adaptorLabelDAOImpl= new AdaptorLabelServiceImpl();
-//			
-//			long result = adaptorLabelDAOImpl.setLabelOfImage(adaptorLabel);
-//			if(result != 0){
-//				return 1;
-//			}else{
-//				return 0;
-//			}
-			
-		//}
 
+	
+	public AdaptorLabel getAdaptorLabel(Integer pid){
+		
+		return adaptorLabelDAO.getAdaptorLabel(pid);
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public List<String> getAdaptorLabelsForLabel() {
 
 		List<String> adaptorLabels = adaptorLabelDAO
@@ -63,10 +59,4 @@ public class AdaptorLabelService {
 			return null;
 		}
 	}
-	
-	public AdaptorLabel getAdaptorLabel(Integer pid){
-		
-		return adaptorLabelDAO.getAdaptorLabel(pid);
-	}
-	
 }
